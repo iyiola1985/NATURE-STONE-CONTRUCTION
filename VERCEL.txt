@@ -1,0 +1,9 @@
+Vercel deployment for this repo (Next.js app lives in /web via npm workspaces).
+
+If builds still fail with "Output Directory public":
+1. Open Vercel → your project → Settings → Build & Deployment.
+2. Set Framework Preset to "Next.js" (or leave Auto after pushing vercel.json).
+3. Clear "Output Directory": leave it EMPTY. Do not use "public" — that is for static exports only. Next.js uses .next internally.
+4. Root Directory: leave as "." (repository root). npm workspaces installs dependencies and `npm run build` builds the web workspace.
+
+Optional: You may instead set Root Directory to "web" and then REMOVE custom Install/Build commands so defaults apply.

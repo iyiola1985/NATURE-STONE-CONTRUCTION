@@ -1,11 +1,12 @@
 {
   "name": "nature-stone-construction",
   "private": true,
+  "workspaces": ["web"],
   "scripts": {
-    "build": "cd web && npm ci && npm run build",
-    "dev": "cd web && npm run dev",
-    "lint": "cd web && npm run lint",
-    "start": "cd web && npm start"
+    "build": "npm run build -w web",
+    "dev": "npm run dev -w web",
+    "lint": "npm run lint -w web",
+    "start": "npm run start -w web"
   },
   "engines": {
     "node": ">=18.17.0"
