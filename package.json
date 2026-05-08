@@ -1,0 +1,13 @@
+{
+  "name": "nature-stone-construction",
+  "private": true,
+  "scripts": {
+    "build": "cd web && npm ci && npm run build",
+    "dev": "cd web && npm run dev",
+    "lint": "cd web && npm run lint",
+    "start": "cd web && npm start"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
