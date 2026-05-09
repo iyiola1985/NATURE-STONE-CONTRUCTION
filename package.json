@@ -6,7 +6,9 @@
     "build": "npm run build -w web",
     "dev": "npm run dev -w web",
     "lint": "npm run lint -w web",
-    "start": "npm run start -w web"
+    "start": "npm run start -w web",
+    "verify:deploy": "npm run lint && npm run build",
+    "verify:deploy:clean": "npm ci && npm run verify:deploy"
   },
   "engines": {
     "node": ">=18.17.0"
