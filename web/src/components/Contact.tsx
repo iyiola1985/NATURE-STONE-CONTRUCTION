@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { FAQ_ITEMS, SITE } from "@/lib/constants";
+import { contactInquiryMessage, whatsappPrefillUrl } from "@/lib/whatsapp";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
@@ -14,6 +15,14 @@ export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
 
   function submit(e: React.FormEvent) {
+    e.preventDefault();
+    const msg = contactInquiryMessage(form);
+    const url = whatsappPrefillUrl(msg);
+    const opened = window.open(url, "_blank", "noopener,noreferrer");
+    if (!opened) window.location.href = url;
+  }
+
+  function submitEmail(e: React.MouseEvent) {
     e.preventDefault();
     const body = encodeURIComponent(
       `Contact form\nName: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\n\n${form.message}`
@@ -84,12 +93,24 @@ export function Contact() {
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                className="cta-glow mt-6 w-full rounded-full bg-matte py-3 text-sm font-semibold uppercase tracking-wide text-concrete transition hover:bg-deep-charcoal dark:bg-gold dark:text-charcoal dark:hover:bg-gold-bright md:w-auto md:px-10"
-              >
-                Submit inquiry
-              </button>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <button
+                  type="submit"
+                  className="cta-glow rounded-full bg-[#25D366] py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-black/20 transition hover:brightness-110 sm:px-10"
+                >
+                  Send via WhatsApp
+                </button>
+                <button
+                  type="button"
+                  onClick={submitEmail}
+                  className="rounded-full border border-matte/20 py-3 text-sm font-semibold uppercase tracking-wide text-matte transition hover:border-gold/40 hover:text-gold dark:border-gold/20 dark:text-concrete dark:hover:text-gold sm:px-8"
+                >
+                  Email instead
+                </button>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-stone-gray dark:text-stone-gray-muted">
+                WhatsApp opens with your details filled in — tap send on your phone to deliver it to our team.
+              </p>
             </form>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -136,7 +157,7 @@ export function Contact() {
                 From QT4-20 throughput to custom molds and curb profiles—we align production with your schedule.
               </p>
               <a
-                href={`https://wa.me/${SITE.whatsapp}`}
+                href={whatsappPrefillUrl(`Hello ${SITE.name}, I'd like to speak with your technical concierge.`)}
                 target="_blank"
                 rel="noreferrer"
                 className="cta-glow mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-wide text-charcoal transition hover:bg-gold-bright"

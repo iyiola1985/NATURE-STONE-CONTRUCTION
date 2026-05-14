@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { SITE } from "@/lib/constants";
+import { whatsappPrefillUrl } from "@/lib/whatsapp";
 
 export function WhatsAppFloat() {
-  const href = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
-    "Hello Nature Stone Construction, I would like to discuss a project quotation."
-  )}`;
+  const href = whatsappPrefillUrl(
+    `Hello ${SITE.name}, I would like to discuss a project or quotation.`
+  );
 
   return (
     <motion.a

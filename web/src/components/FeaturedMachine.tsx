@@ -6,6 +6,7 @@ import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { MACHINE_FEATURES, MACHINE_OUTPUTS, SITE } from "@/lib/constants";
+import { brochureRequestMessage, qt4QuotationMessage, whatsappPrefillUrl } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/SectionHeading";
 
 const gallery = [
@@ -20,6 +21,14 @@ export function FeaturedMachine() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
   function submitQuote(e: React.FormEvent) {
+    e.preventDefault();
+    const msg = qt4QuotationMessage(form);
+    const url = whatsappPrefillUrl(msg);
+    const opened = window.open(url, "_blank", "noopener,noreferrer");
+    if (!opened) window.location.href = url;
+  }
+
+  function submitQuoteEmail(e: React.MouseEvent) {
     e.preventDefault();
     const body = encodeURIComponent(
       `Quotation request – QT4-20\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nNotes: ${form.message}`
@@ -124,10 +133,12 @@ export function FeaturedMachine() {
                 <p className="mt-1 text-sm text-stone-gray-muted">Receive the QT4-20 technical datasheet and cycle diagrams.</p>
               </div>
               <a
-                href={`mailto:${SITE.email}?subject=${encodeURIComponent("QT4-20 brochure request")}`}
+                href={whatsappPrefillUrl(brochureRequestMessage())}
+                target="_blank"
+                rel="noreferrer"
                 className="cta-glow mt-4 inline-flex rounded-full border border-gold/50 bg-gold/10 px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-gold transition hover:bg-gold hover:text-charcoal md:mt-0"
               >
-                Download brochure
+                Request brochure (WhatsApp)
               </a>
             </div>
 
@@ -167,19 +178,21 @@ export function FeaturedMachine() {
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="submit"
-                  className="cta-glow rounded-full bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-wide text-charcoal transition hover:bg-gold-bright"
+                  className="cta-glow rounded-full bg-[#25D366] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-lg shadow-black/25 transition hover:brightness-110"
                 >
-                  Email quotation
+                  Send quote via WhatsApp
                 </button>
-                <a
-                  href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent("QT4-20 quotation — please assist.")}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-gold/20 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-concrete transition hover:border-gold/50 hover:text-gold hover:shadow-[0_0_24px_rgba(201,162,39,0.2)]"
+                <button
+                  type="button"
+                  onClick={submitQuoteEmail}
+                  className="rounded-full border border-white/20 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-concrete transition hover:border-gold/50 hover:text-gold"
                 >
-                  WhatsApp sales
-                </a>
+                  Email instead
+                </button>
               </div>
+              <p className="mt-3 text-xs text-stone-gray-muted">
+                Opens WhatsApp with this quote request — confirm send on your device.
+              </p>
             </form>
           </div>
         </div>

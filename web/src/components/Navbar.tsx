@@ -7,18 +7,21 @@ import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 
-function ThemeToggle() {
+function ThemeToggle({ overHero = false }: { overHero?: boolean }) {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return <div className="h-9 w-9" />;
 
   const isDark = resolvedTheme === "dark";
+  const surface = overHero
+    ? "border-white/30 bg-black/25 text-white hover:border-gold/50 hover:text-gold"
+    : "border-matte/15 bg-concrete/30 text-matte hover:border-gold/40 hover:text-gold dark:border-gold/15 dark:bg-white/5 dark:text-zinc-200";
   return (
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-matte/15 bg-concrete/30 text-matte transition hover:border-gold/40 hover:text-gold dark:border-gold/15 dark:bg-white/5 dark:text-zinc-200"
+      className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition ${surface}`}
       aria-label="Toggle color theme"
     >
       {isDark ? (
@@ -56,9 +59,9 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8 lg:px-10">
-          <Link href="#hero" className="group flex items-center gap-3">
-            <div className="relative h-11 w-36 md:h-12 md:w-40">
+        <div className="mx-auto flex min-w-0 max-w-7xl items-center gap-2 px-4 py-3.5 md:gap-3 md:px-8 lg:px-10">
+          <Link href="#hero" className="group flex shrink-0 items-center gap-3">
+            <div className="relative h-11 w-32 sm:w-36 md:h-12 md:w-40">
               <Image
                 src="/images/logo.png"
                 alt={`${SITE.legalName} logo`}
@@ -69,37 +72,49 @@ export function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.22em] text-stone-gray-deep transition hover:text-industrial dark:text-stone-gray-muted dark:hover:text-gold"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <div className="relative z-0 min-w-0 flex-1 overflow-hidden lg:px-1">
+            <nav className="hidden w-full min-w-0 max-w-full justify-center gap-0.5 overflow-x-auto overscroll-x-contain py-1 lg:flex [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gold/20">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition sm:px-3 sm:text-[12px] sm:tracking-[0.16em] xl:px-3.5 xl:text-[13px] xl:tracking-[0.2em] ${
+                    solid
+                      ? "text-stone-gray-deep hover:text-industrial dark:text-stone-gray-muted dark:hover:text-gold"
+                      : "text-white/90 hover:text-gold dark:text-white/85 dark:hover:text-gold"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <ThemeToggle />
+          <div className="relative z-10 ml-auto hidden shrink-0 items-center gap-2 md:flex md:gap-2.5">
+            <ThemeToggle overHero={!solid} />
             <a
               href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-              className="hidden rounded-full border border-matte/15 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-matte transition hover:border-gold/40 hover:text-gold lg:inline-flex dark:border-gold/15 dark:text-concrete-dim"
+              className="hidden rounded-full border border-matte/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-matte transition hover:border-gold/40 hover:text-gold xl:inline-flex dark:border-gold/15 dark:text-concrete-dim xl:px-5 xl:py-2.5 xl:text-[13px]"
             >
               Call now
             </a>
             <a
               href="#contact"
-              className="cta-glow inline-flex rounded-full bg-gold px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-sm transition hover:bg-gold-bright"
+              aria-label="Get quotation"
+              className="inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] md:px-4 md:py-2.5 md:text-xs xl:text-[13px]"
             >
-              Get quotation
+              <span className="hidden xl:inline">Get quotation</span>
+              <span className="xl:hidden">Quote</span>
             </a>
           </div>
 
           <button
             type="button"
-            className="inline-flex rounded-full border border-matte/20 p-2 text-matte dark:border-gold/15 dark:text-concrete lg:hidden"
+            className={`relative z-10 inline-flex shrink-0 rounded-full border p-2 lg:hidden ${
+              solid
+                ? "border-matte/20 text-matte dark:border-gold/15 dark:text-concrete"
+                : "border-white/30 text-white shadow-[0_1px_3px_rgba(0,0,0,0.65)] dark:border-white/25 dark:text-white"
+            }`}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -136,8 +151,12 @@ export function Navbar() {
                   </a>
                 ))}
                 <div className="mt-2 flex items-center gap-2 border-t border-matte/10 pt-3 dark:border-gold/10">
-                  <ThemeToggle />
-                  <a href="#contact" className="cta-glow flex-1 rounded-full bg-gold py-2 text-center text-sm font-semibold text-charcoal" onClick={() => setOpen(false)}>
+                  <ThemeToggle overHero={false} />
+                  <a
+                    href="#contact"
+                    className="flex-1 rounded-full border border-gold/40 bg-gold/10 py-2.5 text-center text-sm font-semibold uppercase tracking-wide text-gold backdrop-blur-sm transition hover:bg-gold/15 dark:border-gold/30 dark:bg-white/[0.06]"
+                    onClick={() => setOpen(false)}
+                  >
                     Get quotation
                   </a>
                 </div>

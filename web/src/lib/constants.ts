@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Building Nigeria's Future With Precision Block Technology",
   phone: "+234 803 XXX XXXX",
   email: "info@naturestoneconstruction.ng",
-  whatsapp: "2348030000000",
+  whatsapp: "2348030000000", // Country code + number, digits only (no +). Used for wa.me links — replace with your business WhatsApp.
   address: "Industrial Zone, Lagos, Nigeria",
   mapQuery: "Lagos+Nigeria",
 };

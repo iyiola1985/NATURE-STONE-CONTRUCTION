@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
+import { newsletterSignupMessage, whatsappPrefillUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -75,7 +76,9 @@ export function Footer() {
               className="mt-4 flex flex-col gap-2 sm:flex-row"
               onSubmit={(e) => {
                 e.preventDefault();
-                window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Newsletter signup")}&body=${encodeURIComponent(email)}`;
+                const url = whatsappPrefillUrl(newsletterSignupMessage(email));
+                const opened = window.open(url, "_blank", "noopener,noreferrer");
+                if (!opened) window.location.href = url;
               }}
             >
               <input
@@ -86,8 +89,8 @@ export function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 rounded-full border border-gold/20 bg-deep-charcoal/40 px-4 py-2.5 text-sm text-concrete outline-none ring-gold/25 backdrop-blur-sm focus:ring-2"
               />
-              <button type="submit" className="cta-glow rounded-full bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-charcoal transition hover:bg-gold-bright">
-                Join
+              <button type="submit" className="cta-glow rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition hover:brightness-110">
+                Join via WhatsApp
               </button>
             </form>
           </div>

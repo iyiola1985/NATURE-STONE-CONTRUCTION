@@ -67,9 +67,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.22 }}
-          className="max-w-4xl font-heading text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+          className="max-w-4xl text-balance font-heading text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
         >
-          Building Nigeria&apos;s Future With Precision Block Technology
+          Building{" "}
+          <span className="text-gold [text-shadow:0_0_42px_rgba(201,162,39,0.28)]">Nigeria&apos;s</span> Future With{" "}
+          <span className="bg-gradient-to-r from-gold via-industrial to-gold-bright bg-clip-text text-transparent">
+            Precision Block Technology
+          </span>
         </motion.h1>
 
         <motion.p
@@ -95,7 +99,7 @@ export function Hero() {
           </Link>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white backdrop-blur-md transition hover:border-gold/50 hover:text-gold"
+            className="inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06]"
           >
             Get quotation
           </Link>
