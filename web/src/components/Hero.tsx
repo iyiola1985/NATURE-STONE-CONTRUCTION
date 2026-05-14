@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { HERO_STATS } from "@/lib/constants";
 
 function Particles() {
@@ -33,7 +34,6 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section ref={ref} id="hero" className="relative min-h-[100svh] overflow-hidden bg-charcoal">
@@ -52,7 +52,7 @@ export function Hero() {
 
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-28 pt-28 md:px-8 lg:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-28 pt-28 md:px-8 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export function Hero() {
         >
           <Link
             href="#machine"
-            className="inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright"
+            className="cta-glow inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright"
           >
             Explore machines
           </Link>
@@ -117,13 +117,22 @@ export function Hero() {
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">{stat.label}</p>
               <p className="mt-2 font-heading text-2xl font-semibold text-white md:text-3xl">
-                {stat.value}
-                <span className="ml-1 text-base font-normal text-zinc-400">{stat.unit}</span>
+                {stat.label === "Vibration force" ? (
+                  <>
+                    <AnimatedCounter value={80} duration={1.8} />
+                    <span className="ml-1 text-base font-normal text-zinc-400">{stat.unit}</span>
+                  </>
+                ) : (
+                  <>
+                    {stat.value}
+                    <span className="ml-1 text-base font-normal text-zinc-400">{stat.unit}</span>
+                  </>
+                )}
               </p>
             </motion.div>
           ))}
         </motion.div>
-      </motion.div>
+      </div>
 
       <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:block">
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }} className="h-10 w-6 rounded-full border border-white/25">

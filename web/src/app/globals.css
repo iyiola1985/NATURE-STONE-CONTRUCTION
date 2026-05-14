@@ -3,17 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: #f5f5f6;
+  --background: #e4e2dd;
   --foreground: #0a0a0b;
+  --surface: rgba(232, 230, 225, 0.72);
+  --surface-border: rgba(201, 162, 39, 0.14);
 }
 
 .dark {
-  --background: #0a0a0b;
-  --foreground: #f4f4f5;
+  --background: #050608;
+  --foreground: #e8e6e1;
+  --surface: rgba(14, 17, 22, 0.72);
+  --surface-border: rgba(201, 162, 39, 0.18);
 }
 
-html {
-  scroll-behavior: smooth;
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 body {
@@ -25,4 +34,73 @@ body {
 ::selection {
   background: rgba(201, 162, 39, 0.35);
   color: inherit;
+}
+
+@layer utilities {
+  .panel-glass {
+    @apply rounded-3xl border backdrop-blur-xl;
+    border-color: color-mix(in srgb, var(--surface-border), transparent 35%);
+    background: var(--surface);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .dark .panel-glass {
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.12),
+      0 16px 48px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .panel-glass-subtle {
+    @apply border backdrop-blur-lg transition-shadow duration-300;
+    border-color: rgba(10, 10, 11, 0.08);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .panel-glass-subtle {
+    border-color: rgba(201, 162, 39, 0.12);
+    background: rgba(14, 17, 22, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.08),
+      0 10px 36px rgba(0, 0, 0, 0.28);
+  }
+
+  .panel-glass-subtle:hover {
+    border-color: rgba(201, 162, 39, 0.22);
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.15),
+      0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .panel-glass-subtle:hover {
+    border-color: rgba(201, 162, 39, 0.28);
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.2),
+      0 14px 44px rgba(0, 0, 0, 0.35);
+  }
+
+  .cta-glow {
+    transition:
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .cta-glow:hover {
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.45),
+      0 0 36px rgba(201, 162, 39, 0.42),
+      0 16px 48px rgba(0, 0, 0, 0.22);
+  }
+
+  .dark .cta-glow:hover {
+    box-shadow:
+      0 0 0 1px rgba(201, 162, 39, 0.5),
+      0 0 40px rgba(201, 162, 39, 0.38),
+      0 18px 56px rgba(0, 0, 0, 0.45);
+  }
 }

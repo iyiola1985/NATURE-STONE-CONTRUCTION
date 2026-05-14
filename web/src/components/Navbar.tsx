@@ -18,7 +18,7 @@ function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300/30 bg-white/5 text-zinc-200 transition hover:border-gold/40 hover:text-gold dark:border-white/10"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-matte/15 bg-concrete/30 text-matte transition hover:border-gold/40 hover:text-gold dark:border-gold/15 dark:bg-white/5 dark:text-zinc-200"
       aria-label="Toggle color theme"
     >
       {isDark ? (
@@ -49,14 +49,14 @@ export function Navbar() {
       <motion.header
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           solid
-            ? "border-b border-black/5 bg-white/80 shadow-sm backdrop-blur-xl dark:border-white/5 dark:bg-charcoal/85"
-            : "border-b border-transparent bg-gradient-to-b from-black/50 to-transparent"
+            ? "border-b border-matte/10 bg-gradient-to-b from-concrete/92 to-concrete-dim/88 shadow-glass-soft backdrop-blur-xl dark:border-gold/10 dark:from-deep-charcoal/92 dark:to-matte/95 dark:shadow-glow-border-dark"
+            : "border-b border-transparent bg-gradient-to-b from-black/55 to-transparent"
         }`}
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8 lg:px-10">
           <Link href="#hero" className="group flex items-center gap-3">
             <div className="relative h-11 w-36 md:h-12 md:w-40">
               <Image
@@ -74,7 +74,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-3 py-2 text-xs font-medium uppercase tracking-wide text-zinc-700 transition hover:text-gold dark:text-zinc-300 dark:hover:text-gold"
+                className="rounded-full px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.22em] text-stone-gray-deep transition hover:text-industrial dark:text-stone-gray-muted dark:hover:text-gold"
               >
                 {link.label}
               </a>
@@ -85,13 +85,13 @@ export function Navbar() {
             <ThemeToggle />
             <a
               href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-              className="hidden rounded-full border border-zinc-300/40 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-800 transition hover:border-gold/50 hover:text-gold lg:inline-flex dark:border-white/15 dark:text-zinc-200"
+              className="hidden rounded-full border border-matte/15 px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-matte transition hover:border-gold/40 hover:text-gold lg:inline-flex dark:border-gold/15 dark:text-concrete-dim"
             >
               Call now
             </a>
             <a
               href="#contact"
-              className="inline-flex rounded-full bg-gold px-4 py-2 text-xs font-semibold uppercase tracking-wide text-charcoal shadow-sm transition hover:bg-gold-bright"
+              className="cta-glow inline-flex rounded-full bg-gold px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-sm transition hover:bg-gold-bright"
             >
               Get quotation
             </a>
@@ -99,7 +99,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className="inline-flex rounded-full border border-zinc-300/40 p-2 text-zinc-800 dark:border-white/15 dark:text-white lg:hidden"
+            className="inline-flex rounded-full border border-matte/20 p-2 text-matte dark:border-gold/15 dark:text-concrete lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -122,22 +122,22 @@ export function Navbar() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="border-t border-black/5 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-charcoal/95 lg:hidden"
+              className="border-t border-matte/10 bg-gradient-to-b from-concrete/95 to-concrete-dim/90 backdrop-blur-xl dark:border-gold/10 dark:from-deep-charcoal/95 dark:to-matte lg:hidden"
             >
               <div className="flex flex-col gap-1 px-4 py-4">
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-200"
+                    className="rounded-lg px-3 py-2 text-sm font-medium text-matte dark:text-concrete"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
                   </a>
                 ))}
-                <div className="mt-2 flex items-center gap-2 border-t border-black/5 pt-3 dark:border-white/10">
+                <div className="mt-2 flex items-center gap-2 border-t border-matte/10 pt-3 dark:border-gold/10">
                   <ThemeToggle />
-                  <a href="#contact" className="flex-1 rounded-full bg-gold py-2 text-center text-sm font-semibold text-charcoal" onClick={() => setOpen(false)}>
+                  <a href="#contact" className="cta-glow flex-1 rounded-full bg-gold py-2 text-center text-sm font-semibold text-charcoal" onClick={() => setOpen(false)}>
                     Get quotation
                   </a>
                 </div>
