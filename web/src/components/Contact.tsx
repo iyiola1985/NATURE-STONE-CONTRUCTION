@@ -42,52 +42,52 @@ export function Contact() {
             subtitle="Share drawings, BOQs, or delivery windows—our technical desk responds with mold guidance, production schedules, and transparent quotations."
           />
 
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
-            <form onSubmit={submit} className="panel-glass p-8 shadow-glow-border dark:shadow-glow-border-dark">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="md:col-span-2">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="min-w-0 space-y-6">
+            <form onSubmit={submit} className="panel-glass min-w-0 p-8 shadow-glow-border dark:shadow-glow-border-dark">
+              <div className="grid min-w-0 gap-4 md:grid-cols-2">
+                <div className="min-w-0 md:col-span-2">
                   <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Full name</label>
                   <input
                     required
-                    className="mt-2 w-full rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
+                    className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Email</label>
                   <input
                     type="email"
                     required
-                    className="mt-2 w-full rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
+                    className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Phone</label>
                   <input
                     required
-                    className="mt-2 w-full rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
+                    className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   />
                 </div>
-                <div className="md:col-span-2">
+                <div className="min-w-0 md:col-span-2">
                   <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Company / project</label>
                   <input
-                    className="mt-2 w-full rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
+                    className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
                   />
                 </div>
-                <div className="md:col-span-2">
+                <div className="min-w-0 md:col-span-2">
                   <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">How can we engineer this with you?</label>
                   <textarea
                     required
                     rows={4}
-                    className="mt-2 w-full rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
+                    className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                   />
@@ -113,17 +113,22 @@ export function Contact() {
               </p>
             </form>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
               <a
                 href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-                className="panel-glass-subtle rounded-2xl p-5 transition"
+                className="panel-glass-subtle block min-w-0 overflow-hidden rounded-2xl p-5 transition"
               >
                 <p className="text-xs uppercase tracking-wide text-gold">Phone</p>
-                <p className="mt-2 font-heading text-lg font-semibold text-matte dark:text-concrete">{SITE.phone}</p>
+                <p className="mt-2 break-words font-heading text-lg font-semibold text-matte dark:text-concrete">{SITE.phone}</p>
               </a>
-              <a href={`mailto:${SITE.email}`} className="panel-glass-subtle rounded-2xl p-5 transition">
+              <a
+                href={`mailto:${SITE.email}`}
+                className="panel-glass-subtle block min-w-0 overflow-hidden rounded-2xl p-5 transition"
+              >
                 <p className="text-xs uppercase tracking-wide text-gold">Email</p>
-                <p className="mt-2 font-heading text-lg font-semibold text-matte dark:text-concrete">{SITE.email}</p>
+                <p className="mt-2 break-all font-heading text-base font-semibold leading-snug text-matte sm:text-lg dark:text-concrete">
+                  {SITE.email}
+                </p>
               </a>
             </div>
 
@@ -139,7 +144,7 @@ export function Contact() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-6">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="min-w-0 space-y-6">
             <div className="overflow-hidden rounded-3xl border border-matte/10 shadow-glow-border dark:border-gold/12 dark:shadow-glow-border-dark">
               <iframe
                 title="Nature Stone Construction location"

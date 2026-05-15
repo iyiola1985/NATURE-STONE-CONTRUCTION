@@ -3,40 +3,8 @@
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
-
-function ThemeToggle({ overHero = false }: { overHero?: boolean }) {
-  const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return <div className="h-9 w-9" />;
-
-  const isDark = resolvedTheme === "dark";
-  const surface = overHero
-    ? "border-white/30 bg-black/25 text-white hover:border-gold/50 hover:text-gold"
-    : "border-matte/15 bg-concrete/30 text-matte hover:border-gold/40 hover:text-gold dark:border-gold/15 dark:bg-white/5 dark:text-zinc-200";
-  return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition ${surface}`}
-      aria-label="Toggle color theme"
-    >
-      {isDark ? (
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      ) : (
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M21 14.5A8.5 8.5 0 019.5 3 8.5 8.5 0 0012 21a8.5 8.5 0 009-6.5z" />
-        </svg>
-      )}
-    </button>
-  );
-}
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -91,7 +59,6 @@ export function Navbar() {
           </div>
 
           <div className="relative z-10 ml-auto hidden shrink-0 items-center gap-2 md:flex md:gap-2.5">
-            <ThemeToggle overHero={!solid} />
             <a
               href={`tel:${SITE.phone.replace(/\s/g, "")}`}
               className="hidden rounded-full border border-matte/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-matte transition hover:border-gold/40 hover:text-gold xl:inline-flex dark:border-gold/15 dark:text-concrete-dim xl:px-5 xl:py-2.5 xl:text-[13px]"
@@ -150,11 +117,10 @@ export function Navbar() {
                     {link.label}
                   </a>
                 ))}
-                <div className="mt-2 flex items-center gap-2 border-t border-matte/10 pt-3 dark:border-gold/10">
-                  <ThemeToggle overHero={false} />
+                <div className="mt-2 border-t border-matte/10 pt-3 dark:border-gold/10">
                   <a
                     href="#contact"
-                    className="flex-1 rounded-full border border-gold/40 bg-gold/10 py-2.5 text-center text-sm font-semibold uppercase tracking-wide text-gold backdrop-blur-sm transition hover:bg-gold/15 dark:border-gold/30 dark:bg-white/[0.06]"
+                    className="block w-full rounded-full border border-gold/40 bg-gold/10 py-3 text-center text-sm font-semibold uppercase tracking-wide text-gold backdrop-blur-sm transition hover:bg-gold/15 dark:border-gold/30 dark:bg-white/[0.06]"
                     onClick={() => setOpen(false)}
                   >
                     Get quotation
