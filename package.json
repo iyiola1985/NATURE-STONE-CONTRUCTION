@@ -5,6 +5,8 @@
   "scripts": {
     "build": "npm run build -w web",
     "dev": "npm run dev -w web",
+    "dev:clean": "rm -rf web/.next web/node_modules/.cache && npm run dev",
+    "dev:fresh": "npm run dev:fresh -w web",
     "lint": "npm run lint -w web",
     "start": "npm run start -w web",
     "verify:deploy": "npm run lint && npm run build",

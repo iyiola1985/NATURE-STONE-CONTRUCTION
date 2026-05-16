@@ -15,6 +15,10 @@ export function Navbar() {
     setSolid(y > 24);
   });
 
+  const linkTone = solid
+    ? "text-stone-gray-deep hover:text-industrial dark:text-stone-gray-muted dark:hover:text-gold"
+    : "text-white/90 hover:text-gold dark:text-white/85 dark:hover:text-gold";
+
   return (
     <>
       <motion.header
@@ -27,9 +31,9 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="mx-auto flex min-w-0 max-w-7xl items-center gap-2 px-4 py-3.5 md:gap-3 md:px-8 lg:px-10">
-          <Link href="#hero" className="group flex shrink-0 items-center gap-3">
-            <div className="relative h-11 w-32 sm:w-36 md:h-12 md:w-40">
+        <div className="mx-auto flex min-w-0 max-w-7xl items-center gap-2 px-3 py-3 sm:px-4 md:gap-3 md:px-6 lg:gap-4 lg:px-8 xl:px-10">
+          <Link href="#hero" className="group flex shrink-0 items-center">
+            <div className="relative h-10 w-[7.25rem] sm:h-11 sm:w-32 md:h-12 md:w-36 lg:w-[9rem]">
               <Image
                 src="/images/logo.png"
                 alt={`${SITE.legalName} logo`}
@@ -40,17 +44,13 @@ export function Navbar() {
             </div>
           </Link>
 
-          <div className="relative z-0 min-w-0 flex-1 overflow-hidden lg:px-1">
-            <nav className="hidden w-full min-w-0 max-w-full justify-center gap-0.5 overflow-x-auto overscroll-x-contain py-1 lg:flex [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gold/20">
+          <div className="hidden min-w-0 flex-1 justify-center lg:flex">
+            <nav className="flex max-w-full flex-wrap items-center justify-center gap-x-0.5 gap-y-1 px-1" aria-label="Primary">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition sm:px-3 sm:text-[12px] sm:tracking-[0.16em] xl:px-3.5 xl:text-[13px] xl:tracking-[0.2em] ${
-                    solid
-                      ? "text-stone-gray-deep hover:text-industrial dark:text-stone-gray-muted dark:hover:text-gold"
-                      : "text-white/90 hover:text-gold dark:text-white/85 dark:hover:text-gold"
-                  }`}
+                  className={`inline-flex shrink-0 rounded-full px-2 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition sm:px-2.5 sm:text-[11px] sm:tracking-[0.1em] md:px-2.5 md:text-[11px] md:tracking-[0.11em] xl:px-3 xl:text-xs xl:tracking-[0.13em] ${linkTone}`}
                 >
                   {link.label}
                 </a>
@@ -58,43 +58,36 @@ export function Navbar() {
             </nav>
           </div>
 
-          <div className="relative z-10 ml-auto hidden shrink-0 items-center gap-2 md:flex md:gap-2.5">
-            <a
-              href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-              className="hidden rounded-full border border-matte/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-matte transition hover:border-gold/40 hover:text-gold xl:inline-flex dark:border-gold/15 dark:text-concrete-dim xl:px-5 xl:py-2.5 xl:text-[13px]"
-            >
-              Call now
-            </a>
+          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5">
             <a
               href="#contact"
               aria-label="Get quotation"
-              className="inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] md:px-4 md:py-2.5 md:text-xs xl:text-[13px]"
+              className="hidden items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] sm:px-3 sm:text-[11px] md:inline-flex md:px-3.5 md:py-2.5 md:text-xs xl:px-4 xl:text-[13px]"
             >
               <span className="hidden xl:inline">Get quotation</span>
               <span className="xl:hidden">Quote</span>
             </a>
+            <button
+              type="button"
+              className={`inline-flex rounded-full border p-2 lg:hidden ${
+                solid
+                  ? "border-matte/20 text-matte dark:border-gold/15 dark:text-concrete"
+                  : "border-white/30 text-white shadow-[0_1px_3px_rgba(0,0,0,0.65)] dark:border-white/25 dark:text-white"
+              }`}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span className="sr-only">Toggle menu</span>
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {open ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-
-          <button
-            type="button"
-            className={`relative z-10 inline-flex shrink-0 rounded-full border p-2 lg:hidden ${
-              solid
-                ? "border-matte/20 text-matte dark:border-gold/15 dark:text-concrete"
-                : "border-white/30 text-white shadow-[0_1px_3px_rgba(0,0,0,0.65)] dark:border-white/25 dark:text-white"
-            }`}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="sr-only">Toggle menu</span>
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
 
         <AnimatePresence>

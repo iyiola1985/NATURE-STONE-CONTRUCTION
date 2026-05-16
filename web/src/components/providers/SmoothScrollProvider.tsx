@@ -9,54 +9,72 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useLayoutEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: false,
-      lerp: 0.09,
-      smoothWheel: true,
-      anchors: true,
-    });
+    if (typeof window === "undefined") return;
 
-    ScrollTrigger.scrollerProxy(document.documentElement, {
-      scrollTop(value) {
-        if (arguments.length) {
-          lenis.scrollTo(value as number, { immediate: true });
-        }
-        return lenis.scroll;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-          right: window.innerWidth,
-          bottom: window.innerHeight,
-        };
-      },
-      pinType: document.documentElement.style.transform ? "transform" : "fixed",
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
+    let lenis: Lenis | null = null;
 
     const onResize = () => {
-      lenis.resize();
+      lenis?.resize();
       ScrollTrigger.refresh();
     };
-    window.addEventListener("resize", onResize);
 
     const ticker = (time: number) => {
-      lenis.raf(time * 1000);
+      lenis?.raf(time * 1000);
     };
-    gsap.ticker.add(ticker);
-    gsap.ticker.lagSmoothing(0);
 
-    ScrollTrigger.refresh();
+    try {
+      lenis = new Lenis({
+        autoRaf: false,
+        lerp: 0.09,
+        smoothWheel: true,
+        anchors: true,
+      });
+
+      ScrollTrigger.scrollerProxy(document.documentElement, {
+        scrollTop(value) {
+          if (!lenis) return 0;
+          if (arguments.length) {
+            lenis.scrollTo(value as number, { immediate: true });
+          }
+          return lenis.scroll;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            right: window.innerWidth,
+            bottom: window.innerHeight,
+          };
+        },
+        pinType: document.documentElement.style.transform ? "transform" : "fixed",
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+      window.addEventListener("resize", onResize);
+      gsap.ticker.add(ticker);
+      gsap.ticker.lagSmoothing(0);
+      ScrollTrigger.refresh();
+    } catch (err) {
+      console.warn("[SmoothScrollProvider] Lenis / ScrollTrigger init failed — using native scroll.", err);
+      return;
+    }
 
     return () => {
       window.removeEventListener("resize", onResize);
       gsap.ticker.remove(ticker);
-      lenis.destroy();
-      ScrollTrigger.scrollerProxy(document.documentElement);
+      try {
+        lenis?.destroy();
+      } catch {
+        /* ignore */
+      }
+      lenis = null;
+      try {
+        ScrollTrigger.scrollerProxy(document.documentElement);
+      } catch {
+        /* ignore */
+      }
     };
   }, []);
 

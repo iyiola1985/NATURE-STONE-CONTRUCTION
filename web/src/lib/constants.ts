@@ -2,9 +2,9 @@ export const SITE = {
   name: "Nature Stone Construction",
   legalName: "Nature Stone Construction & Properties",
   tagline: "Building Nigeria's Future With Precision Block Technology",
-  phone: "+234 803 XXX XXXX",
+  phone: "+234 806 193 6196",
   email: "info@naturestoneconstruction.ng",
-  whatsapp: "2348030000000", // Country code + number, digits only (no +). Used for wa.me links — replace with your business WhatsApp.
+  whatsapp: "2348061936196", // Digits only for wa.me (e.g. +234 806 193 6196)
   address: "Industrial Zone, Lagos, Nigeria",
   mapQuery: "Lagos+Nigeria",
 };
@@ -12,7 +12,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#machine", label: "QT4-20 Machine" },
+  { href: "#machine", label: "QT4-20" },
   { href: "#products", label: "Products" },
   { href: "#portfolio", label: "Projects" },
   { href: "#why", label: "Why Us" },

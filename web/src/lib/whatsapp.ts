@@ -9,7 +9,11 @@ export function whatsappDigits(phone: string = SITE.whatsapp): string {
 export function whatsappPrefillUrl(message: string, phone: string = SITE.whatsapp): string {
   const max = 1500;
   const body = message.length > max ? `${message.slice(0, max - 24)}\n…(message trimmed)` : message;
-  return `https://wa.me/${whatsappDigits(phone)}?text=${encodeURIComponent(body)}`;
+  const digits = whatsappDigits(phone);
+  if (!digits) {
+    return `https://wa.me/?text=${encodeURIComponent(body)}`;
+  }
+  return `https://wa.me/${digits}?text=${encodeURIComponent(body)}`;
 }
 
 export function contactInquiryMessage(fields: {
