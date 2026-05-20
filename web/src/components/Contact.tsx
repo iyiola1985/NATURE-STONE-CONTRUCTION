@@ -47,7 +47,7 @@ export function Contact() {
             <form onSubmit={submit} className="panel-glass min-w-0 p-8 shadow-glow-border dark:shadow-glow-border-dark">
               <div className="grid min-w-0 gap-4 md:grid-cols-2">
                 <div className="min-w-0 md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Full name</label>
+                  <label className="type-perk text-stone-gray">Full name</label>
                   <input
                     required
                     className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
@@ -56,7 +56,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Email</label>
+                  <label className="type-perk text-stone-gray">Email</label>
                   <input
                     type="email"
                     required
@@ -66,7 +66,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Phone</label>
+                  <label className="type-perk text-stone-gray">Phone</label>
                   <input
                     required
                     className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
@@ -75,7 +75,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="min-w-0 md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">Company / project</label>
+                  <label className="type-perk text-stone-gray">Company / project</label>
                   <input
                     className="mt-2 w-full min-w-0 rounded-xl border border-matte/12 bg-concrete/70 px-4 py-3 text-sm text-matte outline-none ring-gold/25 transition focus:border-gold/40 focus:ring-2 dark:border-gold/15 dark:bg-deep-charcoal/60 dark:text-concrete"
                     value={form.company}
@@ -83,7 +83,7 @@ export function Contact() {
                   />
                 </div>
                 <div className="min-w-0 md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-stone-gray">How can we engineer this with you?</label>
+                  <label className="type-perk text-stone-gray">How can we engineer this with you?</label>
                   <textarea
                     required
                     rows={4}
@@ -96,14 +96,14 @@ export function Contact() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <button
                   type="submit"
-                  className="cta-glow rounded-full bg-[#25D366] py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-black/20 transition hover:brightness-110 sm:px-10"
+                  className="type-cta cta-glow rounded-full bg-[#25D366] py-3 text-white shadow-lg shadow-black/20 transition hover:brightness-110 sm:px-10"
                 >
                   Send via WhatsApp
                 </button>
                 <button
                   type="button"
                   onClick={submitEmail}
-                  className="rounded-full border border-matte/20 py-3 text-sm font-semibold uppercase tracking-wide text-matte transition hover:border-gold/40 hover:text-gold dark:border-gold/20 dark:text-concrete dark:hover:text-gold sm:px-8"
+                  className="type-cta rounded-full border border-matte/20 py-3 text-matte transition hover:border-gold/40 hover:text-gold dark:border-gold/20 dark:text-concrete dark:hover:text-gold sm:px-8"
                 >
                   Email instead
                 </button>
@@ -118,22 +118,22 @@ export function Contact() {
                 href={`tel:${SITE.phone.replace(/\s/g, "")}`}
                 className="panel-glass-subtle block min-w-0 overflow-hidden rounded-2xl p-5 transition"
               >
-                <p className="text-xs uppercase tracking-wide text-gold">Phone</p>
-                <p className="mt-2 break-words font-heading text-lg font-semibold text-matte dark:text-concrete">{SITE.phone}</p>
+                <p className="type-perk text-gold">Phone</p>
+                <p className="type-subtitle mt-2 break-words font-semibold text-matte dark:text-concrete">{SITE.phone}</p>
               </a>
               <a
                 href={`mailto:${SITE.email}`}
                 className="panel-glass-subtle block min-w-0 overflow-hidden rounded-2xl p-5 transition"
               >
-                <p className="text-xs uppercase tracking-wide text-gold">Email</p>
-                <p className="mt-2 break-all font-heading text-base font-semibold leading-snug text-matte sm:text-lg dark:text-concrete">
+                <p className="type-perk text-gold">Email</p>
+                <p className="type-subtitle mt-2 break-all font-semibold leading-snug text-matte dark:text-concrete">
                   {SITE.email}
                 </p>
               </a>
             </div>
 
             <div className="panel-glass-subtle rounded-2xl p-6">
-              <p className="text-xs uppercase tracking-wide text-gold">Business hours</p>
+              <p className="type-perk text-gold">Business hours</p>
               <p className="mt-3 text-sm leading-relaxed text-stone-gray dark:text-stone-gray-muted">
                 Monday – Friday · 8:00 – 18:00 WAT
                 <br />
@@ -156,8 +156,8 @@ export function Contact() {
             </div>
 
             <div className="rounded-3xl border border-gold/20 bg-gradient-to-br from-deep-charcoal via-matte to-charcoal p-8 text-concrete shadow-glow-border-dark">
-              <p className="text-xs uppercase tracking-[0.35em] text-gold">Ready when you are</p>
-              <h3 className="mt-3 font-heading text-2xl font-semibold text-concrete">Book a technical walkthrough</h3>
+              <p className="type-badge">Ready when you are</p>
+              <h3 className="type-title mt-3 text-concrete">Book a technical walkthrough</h3>
               <p className="mt-3 text-sm leading-relaxed text-stone-gray-muted">
                 From QT4-20 throughput to custom molds and curb profiles—we align production with your schedule.
               </p>
@@ -165,14 +165,14 @@ export function Contact() {
                 href={whatsappPrefillUrl(`Hello ${SITE.name}, I'd like to speak with your technical concierge.`)}
                 target="_blank"
                 rel="noreferrer"
-                className="cta-glow mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-wide text-charcoal transition hover:bg-gold-bright"
+                className="type-cta cta-glow mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-charcoal transition hover:bg-gold-bright"
               >
                 WhatsApp concierge
               </a>
             </div>
 
             <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">FAQ</p>
+              <p className="type-badge">FAQ</p>
               {FAQ_ITEMS.map((item, i) => (
                 <div key={item.q} className="panel-glass-subtle overflow-hidden rounded-2xl">
                   <button

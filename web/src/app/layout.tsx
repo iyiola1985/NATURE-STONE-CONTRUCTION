@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { DM_Sans, Syne } from "next/font/google";
+import { Barlow, Oswald } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SITE } from "@/lib/constants";
 
-const heading = Syne({
+/** Section headers, badges, subtitles, perks (Oswald) */
+const display = Oswald({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const sans = DM_Sans({
+/** Body copy, forms, paragraphs (Barlow) */
+const body = Barlow({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],
@@ -95,7 +97,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-NG" suppressHydrationWarning>
-      <body className={`${heading.variable} ${sans.variable} font-sans antialiased`}>
+      <body className={`${display.variable} ${body.variable} font-sans antialiased`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

@@ -37,11 +37,11 @@ export function Process() {
                       {step.step}
                     </div>
                     <div className="hidden md:block">
-                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Phase {step.step}</p>
+                      <p className="type-badge">Phase {step.step}</p>
                     </div>
                   </div>
                   <TiltCard className="panel-glass-subtle rounded-3xl p-6 md:p-8">
-                    <h3 className="font-heading text-2xl font-semibold text-matte dark:text-concrete">{step.title}</h3>
+                    <h3 className="type-title text-matte dark:text-concrete">{step.title}</h3>
                     <p className="mt-3 text-base leading-relaxed text-stone-gray dark:text-stone-gray-muted">{step.detail}</p>
                   </TiltCard>
                 </motion.div>

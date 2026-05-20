@@ -38,7 +38,7 @@ export function Portfolio() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide transition ${
+              className={`type-perk rounded-full px-4 py-2 transition ${
                 filter === f
                   ? "border border-industrial/40 bg-industrial/15 text-industrial shadow-glow-border dark:bg-industrial/20 dark:text-industrial dark:shadow-[0_0_24px_rgba(232,93,4,0.2)]"
                   : "panel-glass-subtle border-matte/10 text-stone-gray-deep hover:border-gold/35 dark:border-gold/10 dark:text-stone-gray-muted dark:hover:border-gold/30"
@@ -84,7 +84,7 @@ export function Portfolio() {
                       {item.category}
                     </div>
                     <div className="absolute inset-x-0 bottom-0 p-5">
-                      <p className="font-heading text-lg font-semibold text-white">{item.title}</p>
+                      <p className="type-title text-white">{item.title}</p>
                       <p className="mt-2 text-sm text-zinc-200">{item.caption}</p>
                     </div>
                   </div>
@@ -106,7 +106,7 @@ export function Portfolio() {
               <div data-parallax-target className="absolute inset-0 h-[118%] w-full -top-[9%]">
                 <Image src="/images/project-2.png" alt="Industrial paving project — preparation phase" fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
               </div>
-              <span className="absolute left-4 top-4 z-[1] rounded-full bg-black/55 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-md">
+              <span className="type-perk absolute left-4 top-4 z-[1] rounded-full bg-black/55 px-3 py-1 text-white backdrop-blur-md">
                 Before · staging
               </span>
             </ParallaxLayer>
@@ -119,7 +119,7 @@ export function Portfolio() {
               <div data-parallax-target className="absolute inset-0 h-[118%] w-full -top-[9%]">
                 <Image src="/images/project-3.png" alt="Industrial paving project — completed surface" fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
               </div>
-              <span className="absolute left-4 top-4 z-[1] rounded-full bg-gold/95 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-charcoal backdrop-blur-md">
+              <span className="type-perk absolute left-4 top-4 z-[1] rounded-full bg-gold/95 px-3 py-1 text-charcoal backdrop-blur-md">
                 After · finished pavement
               </span>
             </ParallaxLayer>
@@ -132,8 +132,8 @@ export function Portfolio() {
         <div className="panel-glass mt-16 p-8 md:p-10">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Client voices</p>
-              <h3 className="mt-3 font-heading text-2xl font-semibold text-matte dark:text-concrete">Trusted on Nigeria&apos;s biggest sites</h3>
+              <p className="type-badge">Client voices</p>
+              <h3 className="type-title mt-3 text-matte dark:text-concrete">Trusted on Nigeria&apos;s biggest sites</h3>
             </div>
             <div className="flex gap-2">
               <button
@@ -196,7 +196,7 @@ export function Portfolio() {
               </div>
               <div className="border-t border-white/10 bg-zinc-950/90 p-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-gold">{activeImage.category}</p>
-                <h4 className="mt-2 font-heading text-2xl text-white">{activeImage.title}</h4>
+                <h4 className="type-title mt-2 text-white">{activeImage.title}</h4>
                 <p className="mt-2 text-sm text-zinc-400">{activeImage.caption}</p>
               </div>
               <button

@@ -23,7 +23,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Navigate</p>
+            <p className="type-badge">Navigate</p>
             <ul className="mt-4 space-y-2 text-sm">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
@@ -36,7 +36,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Contact</p>
+            <p className="type-badge">Contact</p>
             <ul className="mt-4 space-y-3 text-sm">
               <li>{SITE.address}</li>
               <li>
@@ -70,7 +70,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Insights</p>
+            <p className="type-badge">Insights</p>
             <p className="mt-4 text-sm text-stone-gray-muted">Quarterly notes on hydraulic throughput, mold design, and Nigerian infrastructure trends.</p>
             <form
               className="mt-4 flex flex-col gap-2 sm:flex-row"
@@ -89,7 +89,7 @@ export function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 rounded-full border border-gold/20 bg-deep-charcoal/40 px-4 py-2.5 text-sm text-concrete outline-none ring-gold/25 backdrop-blur-sm focus:ring-2"
               />
-              <button type="submit" className="cta-glow rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition hover:brightness-110">
+              <button type="submit" className="type-cta cta-glow rounded-full bg-[#25D366] px-4 py-2.5 text-white transition hover:brightness-110">
                 Join via WhatsApp
               </button>
             </form>

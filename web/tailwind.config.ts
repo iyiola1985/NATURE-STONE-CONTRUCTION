@@ -43,7 +43,9 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+        display: ["var(--font-heading)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        body: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "grid-fade":

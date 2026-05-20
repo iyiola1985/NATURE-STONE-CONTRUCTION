@@ -64,10 +64,10 @@ export function FeaturedMachine() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 z-[1] flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.35em] text-gold">Gallery</p>
-                      <p className="mt-2 font-heading text-2xl">Hydraulic production ecosystem</p>
+                      <p className="type-badge">Gallery</p>
+                      <p className="type-title mt-2 text-white">Hydraulic production ecosystem</p>
                     </div>
-                    <div className="rounded-full border border-gold/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-wide text-concrete-dim backdrop-blur-md">
+                    <div className="type-perk rounded-full border border-gold/15 bg-white/5 px-3 py-1 text-concrete-dim backdrop-blur-md">
                       Hover-ready · PLC controlled
                     </div>
                   </div>
@@ -93,13 +93,13 @@ export function FeaturedMachine() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-gold">Daily production</p>
-                <p className="mt-2 font-heading text-3xl font-semibold">12,000–13,000</p>
+                <p className="type-badge">Daily production</p>
+                <p className="type-stat mt-2 text-white">12,000–13,000</p>
                 <p className="text-sm text-stone-gray-muted">Hollow blocks per day under optimized factory conditions.</p>
               </div>
               <div className="mt-6 flex flex-wrap gap-2 md:mt-0">
                 {MACHINE_OUTPUTS.map((item) => (
-                  <span key={item} className="rounded-full border border-gold/15 bg-white/5 px-3 py-1 text-xs text-concrete-dim">
+                  <span key={item} className="type-perk rounded-full border border-gold/15 bg-white/5 px-3 py-1 text-concrete-dim">
                     {item}
                   </span>
                 ))}
@@ -121,7 +121,7 @@ export function FeaturedMachine() {
                   <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-gold/25 to-transparent text-gold">
                     <span className="text-xs font-bold">{String(i + 1).padStart(2, "0")}</span>
                   </div>
-                  <h4 className="font-heading text-lg font-semibold">{f.title}</h4>
+                  <h4 className="type-title text-white">{f.title}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-stone-gray-muted">{f.description}</p>
                 </TiltCard>
               ))}
@@ -129,22 +129,22 @@ export function FeaturedMachine() {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-gold">Brochure</p>
+                <p className="type-badge">Brochure</p>
                 <p className="mt-1 text-sm text-stone-gray-muted">Receive the QT4-20 technical datasheet and cycle diagrams.</p>
               </div>
               <a
                 href={whatsappPrefillUrl(brochureRequestMessage())}
                 target="_blank"
                 rel="noreferrer"
-                className="cta-glow mt-4 inline-flex rounded-full border border-gold/50 bg-gold/10 px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-gold transition hover:bg-gold hover:text-charcoal md:mt-0"
+                className="type-cta cta-glow mt-4 inline-flex rounded-full border border-gold/50 bg-gold/10 px-5 py-2.5 text-gold transition hover:bg-gold hover:text-charcoal md:mt-0"
               >
                 Request brochure (WhatsApp)
               </a>
             </div>
 
             <form onSubmit={submitQuote} className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl">
-              <p className="text-xs uppercase tracking-[0.25em] text-gold">Request quotation</p>
-              <h4 className="mt-2 font-heading text-xl font-semibold">QT4-20 configuration</h4>
+              <p className="type-badge">Request quotation</p>
+              <h4 className="type-title mt-2 text-white">QT4-20 configuration</h4>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <input
                   required
@@ -178,14 +178,14 @@ export function FeaturedMachine() {
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="submit"
-                  className="cta-glow rounded-full bg-[#25D366] px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-lg shadow-black/25 transition hover:brightness-110"
+                  className="type-cta cta-glow rounded-full bg-[#25D366] px-6 py-3 text-white shadow-lg shadow-black/25 transition hover:brightness-110"
                 >
                   Send quote via WhatsApp
                 </button>
                 <button
                   type="button"
                   onClick={submitQuoteEmail}
-                  className="rounded-full border border-white/20 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-concrete transition hover:border-gold/50 hover:text-gold"
+                  className="type-cta rounded-full border border-white/20 px-6 py-3 text-concrete transition hover:border-gold/50 hover:text-gold"
                 >
                   Email instead
                 </button>

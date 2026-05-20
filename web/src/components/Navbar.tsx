@@ -50,7 +50,7 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`inline-flex shrink-0 rounded-full px-2 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition sm:px-2.5 sm:text-[11px] sm:tracking-[0.1em] md:px-2.5 md:text-[11px] md:tracking-[0.11em] xl:px-3 xl:text-xs xl:tracking-[0.13em] ${linkTone}`}
+                  className={`type-perk inline-flex shrink-0 rounded-full px-2 py-1.5 transition sm:px-2.5 md:px-2.5 xl:px-3 ${linkTone}`}
                 >
                   {link.label}
                 </a>
@@ -62,7 +62,7 @@ export function Navbar() {
             <a
               href="#contact"
               aria-label="Get quotation"
-              className="hidden items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] sm:px-3 sm:text-[11px] md:inline-flex md:px-3.5 md:py-2.5 md:text-xs xl:px-4 xl:text-[13px]"
+              className="type-cta hidden items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-2.5 py-2 text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] sm:px-3 md:inline-flex md:px-3.5 md:py-2.5 xl:px-4"
             >
               <span className="hidden xl:inline">Get quotation</span>
               <span className="xl:hidden">Quote</span>
@@ -113,7 +113,7 @@ export function Navbar() {
                 <div className="mt-2 border-t border-matte/10 pt-3 dark:border-gold/10">
                   <a
                     href="#contact"
-                    className="block w-full rounded-full border border-gold/40 bg-gold/10 py-3 text-center text-sm font-semibold uppercase tracking-wide text-gold backdrop-blur-sm transition hover:bg-gold/15 dark:border-gold/30 dark:bg-white/[0.06]"
+                    className="type-cta block w-full rounded-full border border-gold/40 bg-gold/10 py-3 text-center text-gold backdrop-blur-sm transition hover:bg-gold/15 dark:border-gold/30 dark:bg-white/[0.06]"
                     onClick={() => setOpen(false)}
                   >
                     Get quotation

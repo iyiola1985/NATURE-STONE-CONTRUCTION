@@ -29,29 +29,29 @@ export function About() {
           />
 
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-            <div className="space-y-6 text-lg leading-relaxed text-stone-gray-deep dark:text-concrete-dim">
-              <p>
+            <div className="space-y-6">
+              <p className="type-body text-stone-gray-deep dark:text-concrete-dim">
                 We deliver customized solutions tailored to every client&apos;s project needs while maintaining consistency, reliability, and exceptional manufacturing quality.
               </p>
 
               <div className="grid gap-4 sm:grid-cols-3">
                 <TiltCard className="panel-glass-subtle rounded-2xl p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gold">Daily capability</p>
-                  <p className="mt-3 font-heading text-4xl font-semibold text-matte dark:text-concrete">
+                  <p className="type-perk text-gold">Daily capability</p>
+                  <p className="type-stat mt-3 text-matte dark:text-concrete">
                     <AnimatedCounter value={12500} suffix="+" />
                   </p>
-                  <p className="mt-2 text-sm text-stone-gray dark:text-stone-gray-muted">Hollow blocks per day at optimized feed rates.</p>
+                  <p className="type-body mt-2 text-sm text-stone-gray dark:text-stone-gray-muted">Hollow blocks per day at optimized feed rates.</p>
                 </TiltCard>
                 <TiltCard className="panel-glass-subtle rounded-2xl p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gold">Compaction</p>
-                  <p className="mt-3 font-heading text-4xl font-semibold text-matte dark:text-concrete">
+                  <p className="type-perk text-gold">Compaction</p>
+                  <p className="type-stat mt-3 text-matte dark:text-concrete">
                     <AnimatedCounter value={80} suffix=" kN" />
                   </p>
                   <p className="mt-2 text-sm text-stone-gray dark:text-stone-gray-muted">Industrial vibration platform engineered for density.</p>
                 </TiltCard>
                 <TiltCard className="panel-glass-subtle rounded-2xl p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gold">Cycle window</p>
-                  <p className="mt-3 font-heading text-4xl font-semibold text-matte dark:text-concrete">15–25s</p>
+                  <p className="type-perk text-gold">Cycle window</p>
+                  <p className="type-stat mt-3 text-matte dark:text-concrete">15–25s</p>
                   <p className="mt-2 text-sm text-stone-gray dark:text-stone-gray-muted">Molding cadence tuned for throughput and finish.</p>
                 </TiltCard>
               </div>
@@ -64,19 +64,19 @@ export function About() {
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent md:bg-gradient-to-r" />
                     <div className="absolute bottom-6 left-6 z-[1] max-w-xs">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Leadership</p>
-                      <p className="mt-2 font-heading text-xl text-white">Precision-led execution from quarry to pavement.</p>
+                      <p className="type-badge">Leadership</p>
+                      <p className="type-subtitle mt-2 text-white">Precision-led execution from quarry to pavement.</p>
                     </div>
                   </ParallaxLayer>
                   <div className="flex flex-col gap-6 p-8">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-gold">Mission</p>
+                      <p className="type-perk text-gold">Mission</p>
                       <p className="mt-3 text-sm leading-relaxed text-stone-gray-deep dark:text-stone-gray-muted">
                         Advance Nigeria&apos;s built environment with hydraulic systems that pair engineering discipline with refined aesthetics.
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-gold">Vision</p>
+                      <p className="type-perk text-gold">Vision</p>
                       <p className="mt-3 text-sm leading-relaxed text-stone-gray-deep dark:text-stone-gray-muted">
                         Become the reference industrial partner for premium blocks, pavers, and infrastructure surfacing nationwide.
                       </p>
@@ -88,8 +88,8 @@ export function About() {
 
             <div>
               <TiltCard className="panel-glass sticky top-28 p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Timeline</p>
-                <h3 className="mt-3 font-heading text-2xl font-semibold text-matte dark:text-concrete">Built for scale</h3>
+                <p className="type-badge">Timeline</p>
+                <h3 className="type-title mt-3 text-matte dark:text-concrete">Built for scale</h3>
                 <div className="relative mt-8 space-y-8 border-l border-matte/15 pl-6 dark:border-gold/20">
                   {milestones.map((m) => (
                     <div key={m.year} className="relative">

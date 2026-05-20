@@ -47,10 +47,8 @@ export function VideoSection() {
               </span>
             </button>
             <div className="pointer-events-none absolute bottom-8 left-8 z-[2] max-w-xl">
-              <p className="text-xs uppercase tracking-[0.35em] text-gold">Cinematic briefing</p>
-              <p className="mt-3 font-heading text-2xl font-semibold leading-tight tracking-tight text-concrete md:text-3xl lg:text-4xl">
-                Hydraulic rhythm · PLC telemetry · Nationwide logistics
-              </p>
+              <p className="type-badge">Cinematic briefing</p>
+              <p className="type-title mt-3 text-concrete">Hydraulic rhythm · PLC telemetry · Nationwide logistics</p>
             </div>
           </motion.div>
         </ScrollReveal>

@@ -57,7 +57,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.15 }}
-          className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-gold"
+          className="type-badge mb-4 inline-flex items-center gap-2"
         >
           <span className="h-px w-10 bg-gold/70" />
           Nature Stone Construction
@@ -67,7 +67,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.22 }}
-          className="max-w-4xl text-balance font-heading text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl"
+          className="type-hero-title max-w-4xl text-balance text-white"
         >
           Building{" "}
           <span className="text-gold [text-shadow:0_0_42px_rgba(201,162,39,0.28)]">Nigeria&apos;s</span> Future With{" "}
@@ -80,7 +80,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.32 }}
-          className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300 md:text-xl"
+          className="type-subtitle mt-6 max-w-2xl text-zinc-200/95"
         >
           High-efficiency hydraulic block machines and premium paving solutions engineered for durability, speed, and performance.
         </motion.p>
@@ -93,13 +93,13 @@ export function Hero() {
         >
           <Link
             href="#machine"
-            className="cta-glow inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-sm font-semibold uppercase tracking-wide text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright"
+            className="type-cta cta-glow inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright"
           >
             Explore machines
           </Link>
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06]"
+            className="type-cta inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-8 py-3 text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06]"
           >
             Get quotation
           </Link>
@@ -119,8 +119,8 @@ export function Hero() {
               transition={{ delay: 0.62 + i * 0.06 }}
               className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 shadow-glass backdrop-blur-xl"
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">{stat.label}</p>
-              <p className="mt-2 font-heading text-2xl font-semibold text-white md:text-3xl">
+              <p className="type-perk text-zinc-400">{stat.label}</p>
+              <p className="type-stat mt-2 text-white">
                 {stat.label === "Vibration force" ? (
                   <>
                     <AnimatedCounter value={80} duration={1.8} />

@@ -37,7 +37,7 @@ export function WhyChooseUs() {
                     <WhyIcon name={item.icon} className="h-6 w-6" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-lg font-semibold text-concrete">{item.title}</h3>
+                    <h3 className="type-title text-concrete">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-stone-gray-muted">
                       Precision workflows tuned for Nigerian sites—from Lagos humidity to northern haul distances.
                     </p>

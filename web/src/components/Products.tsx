@@ -39,8 +39,8 @@ export function Products() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-90 transition group-hover:opacity-95" />
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Industrial grade</p>
-                    <h3 className="mt-2 font-heading text-2xl font-semibold text-white">{card.title}</h3>
+                    <p className="type-badge">Industrial grade</p>
+                    <h3 className="type-title mt-2 text-white">{card.title}</h3>
                     <p className="mt-3 max-w-md text-sm leading-relaxed text-zinc-200">{card.description}</p>
                   </div>
                 </div>
