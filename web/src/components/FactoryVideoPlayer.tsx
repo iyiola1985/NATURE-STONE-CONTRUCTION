@@ -15,6 +15,42 @@ function PlayIcon({ className }: { className?: string }) {
   );
 }
 
+type VideoWithWebkit = HTMLVideoElement & {
+  webkitEnterFullscreen?: () => void;
+  webkitDisplayingFullscreen?: boolean;
+};
+
+type StageWithWebkit = HTMLDivElement & {
+  webkitRequestFullscreen?: () => void;
+};
+
+async function requestStageFullscreen(stage: StageWithWebkit | null) {
+  if (!stage) return false;
+  try {
+    if (stage.requestFullscreen) {
+      await stage.requestFullscreen();
+      return true;
+    }
+    if (stage.webkitRequestFullscreen) {
+      stage.webkitRequestFullscreen();
+      return true;
+    }
+  } catch {
+    /* viewport-filling modal is the fallback */
+  }
+  return false;
+}
+
+async function exitStageFullscreen() {
+  try {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
 export type FactoryVideoPlayerProps = {
   variant?: "dark" | "light";
   badge?: string;
@@ -52,12 +88,24 @@ export function FactoryVideoPlayer({
   const [shouldLoad, setShouldLoad] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
+  const [modalVideoFailed, setModalVideoFailed] = useState(false);
 
   const shellRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLVideoElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const modalVideoRef = useRef<HTMLVideoElement>(null);
 
-  const close = useCallback(() => setOpen(false), []);
+  const close = useCallback(() => {
+    setOpen(false);
+    setModalVideoFailed(false);
+    void exitStageFullscreen();
+  }, []);
+
+  const openPlayer = useCallback(() => {
+    setModalVideoFailed(false);
+    setOpen(true);
+  }, []);
+
   const isLight = variant === "light";
 
   const frameClass = isLight
@@ -98,26 +146,43 @@ export function FactoryVideoPlayer({
 
   useEffect(() => {
     if (!open) return;
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
+
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
+
+    const onFullscreenChange = () => {
+      if (!document.fullscreenElement && open) {
+        /* user exited native fullscreen with Esc — keep modal open until they close */
+      }
+    };
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
     };
   }, [open, close]);
 
   useEffect(() => {
-    const el = modalVideoRef.current;
-    if (!el) return;
-    if (open) {
-      el.currentTime = 0;
-      void el.play().catch(() => {});
-    } else {
-      el.pause();
-    }
+    if (!open) return;
+
+    const video = modalVideoRef.current as VideoWithWebkit | null;
+    const stage = stageRef.current as StageWithWebkit | null;
+    if (!video) return;
+
+    video.currentTime = 0;
+    void video.play().catch(() => {});
+
+    void requestStageFullscreen(stage);
+
+    return () => {
+      video.pause();
+    };
   }, [open]);
 
   const showVideo = shouldLoad && !videoFailed;
@@ -135,7 +200,7 @@ export function FactoryVideoPlayer({
         >
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={openPlayer}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             className={`relative block w-full cursor-pointer text-left focus:outline-none focus-visible:ring-2 ${focusRing}`}
@@ -165,6 +230,12 @@ export function FactoryVideoPlayer({
                     videoReady ? (hovered ? "scale-[1.04] brightness-110 opacity-100" : "scale-100 brightness-[0.88] opacity-100") : "opacity-0"
                   }`}
                 />
+              )}
+
+              {videoFailed && (
+                <div className="absolute inset-0 z-[1] flex items-center justify-center bg-black/70 px-4 text-center text-sm text-concrete-dim">
+                  Video preview unavailable — tap to try full playback
+                </div>
               )}
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15" />
@@ -259,44 +330,75 @@ export function FactoryVideoPlayer({
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[90] flex items-end justify-center bg-black/90 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur-md sm:items-center sm:p-4"
+            className="fixed inset-0 z-[100] flex h-[100dvh] w-[100dvw] flex-col bg-black"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={close}
             role="dialog"
             aria-modal="true"
             aria-label={ariaLabel}
           >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 12 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.96, opacity: 0, y: 8 }}
-              transition={{ type: "spring", stiffness: 320, damping: 28 }}
-              className="relative max-h-[92dvh] w-full max-w-5xl overflow-hidden rounded-2xl border border-gold/25 bg-deep-charcoal shadow-glow-border-dark sm:rounded-3xl"
+            <div
+              ref={stageRef}
+              className="relative flex min-h-0 flex-1 flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-video w-full bg-black">
-                <video
-                  ref={modalVideoRef}
-                  src={videoSrc}
-                  controls
-                  playsInline
-                  preload="auto"
-                  className="h-full w-full object-contain"
-                />
+              <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-3 bg-gradient-to-b from-black/80 to-transparent px-4 pb-8 pt-[max(0.75rem,env(safe-area-inset-top))]">
+                <p className="type-subtitle line-clamp-2 min-w-0 flex-1 text-concrete">{title}</p>
+                <div className="flex shrink-0 items-center gap-2">
+                  <button
+                    type="button"
+                    className="type-cta hidden rounded-full border border-gold/30 bg-gold/10 px-3 py-2 text-gold transition hover:bg-gold hover:text-charcoal sm:inline-flex"
+                    onClick={() => void requestStageFullscreen(stageRef.current)}
+                    aria-label="Enter fullscreen"
+                  >
+                    Fullscreen
+                  </button>
+                  <button
+                    type="button"
+                    className="type-cta rounded-full border border-gold/30 bg-black/60 px-4 py-2 text-gold backdrop-blur-sm transition hover:bg-gold hover:text-charcoal"
+                    onClick={close}
+                    aria-label="Close video"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-gold/15 px-5 py-4">
-                <p className="type-subtitle text-concrete-dim">{title}</p>
-                <button
-                  type="button"
-                  className="type-cta rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-gold transition hover:bg-gold hover:text-charcoal"
-                  onClick={close}
-                >
-                  Close
-                </button>
+
+              <div className="flex min-h-0 flex-1 items-center justify-center px-0 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-14 sm:px-2 sm:pt-16">
+                {modalVideoFailed ? (
+                  <p className="px-6 text-center text-sm text-concrete-dim">
+                    This video could not be loaded. If you just deployed, wait for the build to finish or contact us for
+                    assistance.
+                  </p>
+                ) : (
+                  <video
+                    ref={modalVideoRef}
+                    src={videoSrc}
+                    controls
+                    playsInline
+                    preload="auto"
+                    controlsList="nodownload"
+                    className="h-full max-h-[100dvh] w-full max-w-[100dvw] object-contain"
+                    onError={() => setModalVideoFailed(true)}
+                    onClick={(e) => {
+                      const v = e.currentTarget as VideoWithWebkit;
+                      if (typeof v.webkitEnterFullscreen === "function") {
+                        try {
+                          v.webkitEnterFullscreen();
+                        } catch {
+                          /* native controls handle fullscreen */
+                        }
+                      }
+                    }}
+                  />
+                )}
               </div>
-            </motion.div>
+
+              <p className="pointer-events-none absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-0 right-0 z-10 px-4 pb-2 text-center text-[10px] text-white/50 sm:hidden">
+                Tip: use the fullscreen control on the video for the largest view
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -12,8 +12,8 @@ export const SITE = {
 /** Hosted factory reel (machine operation & logistics) */
 export const FACTORY_VIDEO_SRC = "/videos/machine-operations.mp4";
 
-/** Projects reel — collection through completed paving handover */
-export const PROJECTS_VIDEO_SRC = "/videos/projects-completed.mp4";
+/** Projects reel — collection through completed paving handover (web-compressed for deploy) */
+export const PROJECTS_VIDEO_SRC = "/videos/projects-completed-web.mp4";
 
 export const NAV_LINKS = [
   { href: "#hero", label: "Home" },

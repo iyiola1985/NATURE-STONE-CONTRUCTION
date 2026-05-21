@@ -2,5 +2,5 @@ node_modules
 .next
 web/node_modules/.cache
 
-# Exceeds GitHub 100MB limit — host separately or compress before committing
+# Original upload is ~258MB (over GitHub limit). Deploy projects-completed-web.mp4 instead.
 web/public/videos/projects-completed.mp4
