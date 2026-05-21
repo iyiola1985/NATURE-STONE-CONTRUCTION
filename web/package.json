@@ -18,10 +18,6 @@
     "react": "^18",
     "react-dom": "^18"
   },
-  "optionalDependencies": {
-    "@next/swc-darwin-arm64": "14.2.35",
-    "@next/swc-darwin-x64": "14.2.35"
-  },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
