@@ -1,23 +1,20 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
+import { FactoryVideoPlayer } from "@/components/FactoryVideoPlayer";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { MACHINE_FEATURES, MACHINE_OUTPUTS, SITE } from "@/lib/constants";
 import { brochureRequestMessage, qt4QuotationMessage, whatsappPrefillUrl } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/SectionHeading";
 
-const gallery = [
-  { src: "/images/hero-1.png", alt: "Hydraulic paving production environment" },
-  { src: "/images/project-1.png", alt: "Precision paver installation on site" },
-  { src: "/images/project-2.png", alt: "Industrial logistics and material staging" },
-  { src: "/images/project-3.png", alt: "Large-format civic paving scope" },
+const QT4_VIDEO_HIGHLIGHTS = [
+  "QT4-20 hydraulic molding",
+  "Live production cycle",
+  "Fleet & plant logistics",
 ];
 
 export function FeaturedMachine() {
-  const [active, setActive] = useState(0);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
   function submitQuote(e: React.FormEvent) {
@@ -37,11 +34,11 @@ export function FeaturedMachine() {
   }
 
   return (
-    <section id="machine" className="relative overflow-hidden bg-section-charcoal py-24 md:py-28 text-concrete">
+    <section id="machine" className="section-pad relative overflow-hidden bg-section-charcoal text-concrete">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,162,39,0.12),_transparent_55%)]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.07] bg-grid-fade bg-[length:56px_56px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 lg:px-10">
+      <div className="section-wrap">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Featured platform"
@@ -49,49 +46,19 @@ export function FeaturedMachine() {
             subtitle="Flagship hydraulic molding engineered for Nigerian aggregates—with PLC intelligence, rapid cycles, and outputs suited for estates, roads, and industrial yards."
           />
 
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-            <div className="space-y-6">
-              <ParallaxLayer className="relative aspect-[16/11] overflow-hidden rounded-3xl border border-white/10 shadow-2xl" range={12}>
-                <div data-parallax-target className="absolute inset-0 h-[118%] w-full -top-[9%]">
-                  <Image
-                    src={gallery[active].src}
-                    alt={gallery[active].alt}
-                    fill
-                    className="object-cover transition duration-700"
-                    sizes="(max-width:1024px) 100vw, 55vw"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 z-[1] flex flex-wrap items-end justify-between gap-4">
-                    <div>
-                      <p className="type-badge">Gallery</p>
-                      <p className="type-title mt-2 text-white">Hydraulic production ecosystem</p>
-                    </div>
-                    <div className="type-perk rounded-full border border-gold/15 bg-white/5 px-3 py-1 text-concrete-dim backdrop-blur-md">
-                      Hover-ready · PLC controlled
-                    </div>
-                  </div>
-                </div>
-              </ParallaxLayer>
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+            <div className="min-w-0 space-y-6">
+              <FactoryVideoPlayer
+                variant="dark"
+                badge="QT4-20 in production"
+                title="Watch the hydraulic line — machine operation & delivery fleet"
+                highlights={QT4_VIDEO_HIGHLIGHTS}
+                playLabel="Play full machine footage"
+                hint="Real site video: semi-automatic molding, material flow, and trucks ready for dispatch."
+                ariaLabel="Play QT4-20 hydraulic block machine production video"
+              />
 
-            <div className="grid grid-cols-4 gap-3">
-              {gallery.map((g, idx) => (
-                <button
-                  key={g.src}
-                  type="button"
-                  onMouseEnter={() => setActive(idx)}
-                  onFocus={() => setActive(idx)}
-                  onClick={() => setActive(idx)}
-                  className={`relative aspect-video overflow-hidden rounded-xl border transition ${
-                    active === idx ? "border-gold ring-2 ring-gold/40" : "border-white/10 hover:border-white/30"
-                  }`}
-                >
-                  <Image src={g.src} alt={g.alt} fill className="object-cover" sizes="120px" />
-                </button>
-              ))}
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">
               <div>
                 <p className="type-badge">Daily production</p>
                 <p className="type-stat mt-2 text-white">12,000–13,000</p>
@@ -107,7 +74,7 @@ export function FeaturedMachine() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <div className="grid gap-4 sm:grid-cols-2">
               {MACHINE_FEATURES.map((f, i) => (
                 <TiltCard
@@ -145,11 +112,11 @@ export function FeaturedMachine() {
             <form onSubmit={submitQuote} className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl">
               <p className="type-badge">Request quotation</p>
               <h4 className="type-title mt-2 text-white">QT4-20 configuration</h4>
-              <div className="mt-4 grid gap-3 md:grid-cols-2">
+              <div className="mt-4 grid min-w-0 gap-3 md:grid-cols-2">
                 <input
                   required
                   placeholder="Full name"
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2"
+                  className="min-w-0 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
@@ -157,35 +124,35 @@ export function FeaturedMachine() {
                   type="email"
                   required
                   placeholder="Email"
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2"
+                  className="min-w-0 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
                 <input
                   placeholder="Phone / WhatsApp"
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2 md:col-span-2"
+                  className="min-w-0 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2 md:col-span-2"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 />
                 <textarea
                   placeholder="Project scope, timeline, delivery city"
                   rows={3}
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2 md:col-span-2"
+                  className="min-w-0 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none ring-gold/40 focus:ring-2 md:col-span-2"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
               </div>
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <button
                   type="submit"
-                  className="type-cta cta-glow rounded-full bg-[#25D366] px-6 py-3 text-white shadow-lg shadow-black/25 transition hover:brightness-110"
+                  className="type-cta cta-glow w-full rounded-full bg-[#25D366] px-6 py-3 text-white shadow-lg shadow-black/25 transition hover:brightness-110 sm:w-auto"
                 >
                   Send quote via WhatsApp
                 </button>
                 <button
                   type="button"
                   onClick={submitQuoteEmail}
-                  className="type-cta rounded-full border border-white/20 px-6 py-3 text-concrete transition hover:border-gold/50 hover:text-gold"
+                  className="type-cta w-full rounded-full border border-white/20 px-6 py-3 text-concrete transition hover:border-gold/50 hover:text-gold sm:w-auto"
                 >
                   Email instead
                 </button>

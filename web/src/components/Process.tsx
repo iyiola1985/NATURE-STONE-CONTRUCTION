@@ -8,10 +8,10 @@ import { SectionHeading } from "@/components/SectionHeading";
 
 export function Process() {
   return (
-    <section id="process" className="relative overflow-hidden bg-section-concrete py-24 md:py-28 dark:bg-section-matte">
+    <section id="process" className="section-pad relative overflow-hidden bg-section-concrete dark:bg-section-matte">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-industrial/35 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 lg:px-10">
+      <div className="section-wrap">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Process"
@@ -40,7 +40,7 @@ export function Process() {
                       <p className="type-badge">Phase {step.step}</p>
                     </div>
                   </div>
-                  <TiltCard className="panel-glass-subtle rounded-3xl p-6 md:p-8">
+                  <TiltCard className="panel-glass-subtle min-w-0 rounded-2xl p-5 sm:rounded-3xl sm:p-6 md:p-8">
                     <h3 className="type-title text-matte dark:text-concrete">{step.title}</h3>
                     <p className="mt-3 text-base leading-relaxed text-stone-gray dark:text-stone-gray-muted">{step.detail}</p>
                   </TiltCard>

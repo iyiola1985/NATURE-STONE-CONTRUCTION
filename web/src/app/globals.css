@@ -16,6 +16,11 @@
   --surface-border: rgba(201, 162, 39, 0.18);
 }
 
+html {
+  overflow-x: clip;
+  scroll-padding-top: 5.5rem;
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
@@ -31,6 +36,8 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  min-width: 0;
 }
 
 @layer base {
@@ -57,27 +64,27 @@ body {
 /* Oswald header scale: badge 10px · title 20px · subtitle 14px · perks 11px */
 @layer components {
   .type-badge {
-    @apply font-heading text-[10px] font-bold uppercase tracking-[0.2em] text-gold;
+    @apply font-heading text-[9px] font-bold uppercase tracking-[0.14em] text-gold sm:text-[10px] sm:tracking-[0.2em];
   }
 
   .type-title {
-    @apply font-heading text-xl font-bold uppercase leading-snug tracking-wide;
+    @apply text-balance font-heading text-base font-bold uppercase leading-snug tracking-wide sm:text-lg md:text-xl;
   }
 
   .type-hero-title {
-    @apply font-heading text-2xl font-bold uppercase leading-tight tracking-wide sm:text-3xl md:text-4xl lg:text-5xl;
+    @apply text-balance font-heading text-xl font-bold uppercase leading-[1.12] tracking-wide sm:text-3xl md:text-4xl lg:text-5xl;
   }
 
   .type-subtitle {
-    @apply font-heading text-sm font-normal leading-relaxed tracking-normal;
+    @apply font-heading text-[13px] font-normal leading-relaxed tracking-normal sm:text-sm;
   }
 
   .type-perk {
-    @apply font-heading text-[11px] font-bold uppercase tracking-wide;
+    @apply font-heading text-[10px] font-bold uppercase tracking-wide sm:text-[11px];
   }
 
   .type-stat {
-    @apply font-heading text-2xl font-bold normal-case leading-none tracking-tight md:text-3xl;
+    @apply font-heading text-xl font-bold normal-case leading-none tracking-tight sm:text-2xl md:text-3xl;
   }
 
   .type-cta {
@@ -86,7 +93,15 @@ body {
 
   /* Barlow paragraph copy (forms, descriptions, about body) */
   .type-body {
-    @apply font-sans text-base font-normal leading-relaxed;
+    @apply font-sans text-sm font-normal leading-relaxed sm:text-base;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 md:py-24 lg:py-28;
+  }
+
+  .section-wrap {
+    @apply relative mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10;
   }
 }
 

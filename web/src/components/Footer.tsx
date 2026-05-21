@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-gold/15 bg-section-matte text-stone-gray-muted">
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:px-10">
+      <div className="section-wrap py-12 sm:py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="relative h-16 w-48">
@@ -45,7 +45,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${SITE.email}`} className="hover:text-concrete">
+                <a href={`mailto:${SITE.email}`} className="break-all hover:text-concrete">
                   {SITE.email}
                 </a>
               </li>

@@ -9,7 +9,6 @@ import { Navbar } from "@/components/Navbar";
 import { Portfolio } from "@/components/Portfolio";
 import { Process } from "@/components/Process";
 import { Products } from "@/components/Products";
-import { VideoSection } from "@/components/VideoSection";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 
@@ -17,7 +16,7 @@ export function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="min-w-0 overflow-x-clip">
         <Hero />
         <About />
         <FeaturedMachine />
@@ -25,7 +24,6 @@ export function HomePage() {
         <Portfolio />
         <WhyChooseUs />
         <Process />
-        <VideoSection />
         <Contact />
       </main>
       <Footer />

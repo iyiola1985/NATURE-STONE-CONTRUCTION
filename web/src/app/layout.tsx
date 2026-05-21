@@ -97,7 +97,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-NG" suppressHydrationWarning>
-      <body className={`${display.variable} ${body.variable} font-sans antialiased`}>
+      <body className={`${display.variable} ${body.variable} min-w-0 overflow-x-clip font-sans antialiased`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

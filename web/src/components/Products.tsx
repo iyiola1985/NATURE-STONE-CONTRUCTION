@@ -8,10 +8,10 @@ import { SectionHeading } from "@/components/SectionHeading";
 
 export function Products() {
   return (
-    <section id="products" className="relative overflow-hidden bg-section-concrete py-24 md:py-28 dark:bg-section-matte">
+    <section id="products" className="section-pad relative overflow-hidden bg-section-concrete dark:bg-section-matte">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-concrete/50 via-transparent to-concrete-dim/40 dark:from-deep-charcoal/40 dark:via-transparent dark:to-matte" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 lg:px-10">
+      <div className="section-wrap">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Catalog"

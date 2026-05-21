@@ -2,12 +2,18 @@ export const SITE = {
   name: "Nature Stone Construction",
   legalName: "Nature Stone Construction & Properties",
   tagline: "Building Nigeria's Future With Precision Block Technology",
-  phone: "+234 806 193 6196",
-  email: "info@naturestoneconstruction.ng",
-  whatsapp: "2348061936196", // Digits only for wa.me (e.g. +234 806 193 6196)
+  phone: "+234 906 596 7485",
+  email: "naturestoneconstruction@gmail.com",
+  whatsapp: "2349065967485", // Digits only for wa.me (09065967485 → +234 906 596 7485)
   address: "Industrial Zone, Lagos, Nigeria",
   mapQuery: "Lagos+Nigeria",
 };
+
+/** Hosted factory reel (machine operation & logistics) */
+export const FACTORY_VIDEO_SRC = "/videos/machine-operations.mp4";
+
+/** Projects reel — collection through completed paving handover */
+export const PROJECTS_VIDEO_SRC = "/videos/projects-completed.mp4";
 
 export const NAV_LINKS = [
   { href: "#hero", label: "Home" },
@@ -17,7 +23,6 @@ export const NAV_LINKS = [
   { href: "#portfolio", label: "Projects" },
   { href: "#why", label: "Why Us" },
   { href: "#process", label: "Process" },
-  { href: "#videos", label: "Factory" },
   { href: "#contact", label: "Contact" },
 ] as const;
 

@@ -22,6 +22,14 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       lenis?.raf(time * 1000);
     };
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const useNativeScroll =
+      prefersReducedMotion ||
+      window.matchMedia("(max-width: 1023px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (useNativeScroll) return;
+
     try {
       lenis = new Lenis({
         autoRaf: false,

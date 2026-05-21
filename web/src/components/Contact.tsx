@@ -31,10 +31,10 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-section-concrete py-24 md:py-28 dark:bg-section-matte">
+    <section id="contact" className="section-pad relative overflow-hidden bg-section-concrete dark:bg-section-matte">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(232,93,4,0.06),_transparent_50%),radial-gradient(circle_at_80%_20%,rgba(201,162,39,0.08),transparent_55%)]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 lg:px-10">
+      <div className="section-wrap">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Contact"
@@ -44,7 +44,7 @@ export function Contact() {
 
           <div className="grid min-w-0 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="min-w-0 space-y-6">
-            <form onSubmit={submit} className="panel-glass min-w-0 p-8 shadow-glow-border dark:shadow-glow-border-dark">
+            <form onSubmit={submit} className="panel-glass min-w-0 p-5 shadow-glow-border sm:p-8 dark:shadow-glow-border-dark">
               <div className="grid min-w-0 gap-4 md:grid-cols-2">
                 <div className="min-w-0 md:col-span-2">
                   <label className="type-perk text-stone-gray">Full name</label>
@@ -149,13 +149,13 @@ export function Contact() {
               <iframe
                 title="Nature Stone Construction location"
                 src={MAP_EMBED}
-                className="aspect-[4/3] h-[320px] w-full border-0 md:h-[380px]"
+                className="aspect-[4/3] h-[min(52vw,280px)] w-full border-0 sm:h-[320px] md:h-[380px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
-            <div className="rounded-3xl border border-gold/20 bg-gradient-to-br from-deep-charcoal via-matte to-charcoal p-8 text-concrete shadow-glow-border-dark">
+            <div className="rounded-2xl border border-gold/20 bg-gradient-to-br from-deep-charcoal via-matte to-charcoal p-6 text-concrete shadow-glow-border-dark sm:rounded-3xl sm:p-8">
               <p className="type-badge">Ready when you are</p>
               <h3 className="type-title mt-3 text-concrete">Book a technical walkthrough</h3>
               <p className="mt-3 text-sm leading-relaxed text-stone-gray-muted">
@@ -177,7 +177,7 @@ export function Contact() {
                 <div key={item.q} className="panel-glass-subtle overflow-hidden rounded-2xl">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-matte dark:text-concrete"
+                    className="flex w-full min-w-0 items-start justify-between gap-3 px-4 py-4 text-left text-sm font-semibold text-matte dark:text-concrete sm:px-5"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
                     {item.q}

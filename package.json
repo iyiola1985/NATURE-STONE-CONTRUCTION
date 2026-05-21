@@ -3,9 +3,9 @@
   "private": true,
   "workspaces": ["web"],
   "scripts": {
-    "build": "npm run build -w web",
-    "dev": "npm run dev -w web",
-    "dev:clean": "rm -rf web/.next web/node_modules/.cache && npm run dev",
+    "build": "node scripts/next-build-guard.mjs && npm run build -w web",
+    "dev": "NEXT_IGNORE_INCORRECT_LOCKFILE=1 node scripts/next-dev-guard.mjs && NEXT_IGNORE_INCORRECT_LOCKFILE=1 npm run dev -w web",
+    "dev:clean": "rm -rf web/.next web/node_modules/.cache && npm run dev -w web",
     "dev:fresh": "npm run dev:fresh -w web",
     "lint": "npm run lint -w web",
     "start": "npm run start -w web",

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_IGNORE_INCORRECT_LOCKFILE=1 node ../scripts/next-dev-guard.mjs && NEXT_IGNORE_INCORRECT_LOCKFILE=1 next dev",
     "dev:fresh": "rm -rf .next && next dev",
-    "build": "next build",
+    "build": "node ../scripts/next-build-guard.mjs && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,6 +17,10 @@
     "next-themes": "^0.4.6",
     "react": "^18",
     "react-dom": "^18"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-arm64": "14.2.35",
+    "@next/swc-darwin-x64": "14.2.35"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -52,7 +52,7 @@ export function Hero() {
 
       <Particles />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-4 pb-28 pt-28 md:px-8 lg:px-10">
+      <div className="section-wrap relative z-10 flex min-h-[100svh] flex-col justify-center pb-24 pt-24 sm:pb-28 sm:pt-28">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,17 +89,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.42 }}
-          className="mt-10 flex flex-wrap gap-4"
+          className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap"
         >
           <Link
             href="#machine"
-            className="type-cta cta-glow inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright"
+            className="type-cta cta-glow inline-flex w-full items-center justify-center rounded-full bg-gold px-8 py-3 text-charcoal shadow-lg shadow-black/30 transition hover:bg-gold-bright sm:w-auto"
           >
             Explore machines
           </Link>
           <Link
             href="#contact"
-            className="type-cta inline-flex items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-8 py-3 text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06]"
+            className="type-cta inline-flex w-full items-center justify-center rounded-full border border-gold/35 bg-white/[0.07] px-8 py-3 text-gold shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition hover:border-gold/55 hover:bg-gold/10 hover:text-gold-bright dark:border-gold/25 dark:bg-white/[0.06] sm:w-auto"
           >
             Get quotation
           </Link>
@@ -109,7 +109,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.55 }}
-          className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid grid-cols-2 gap-3 sm:mt-16 sm:gap-4 lg:grid-cols-4"
         >
           {HERO_STATS.map((stat, i) => (
             <motion.div

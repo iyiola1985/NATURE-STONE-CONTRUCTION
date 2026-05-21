@@ -8,10 +8,10 @@ import { SectionHeading } from "@/components/SectionHeading";
 
 export function WhyChooseUs() {
   return (
-    <section id="why" className="relative overflow-hidden bg-section-charcoal py-24 md:py-28 text-concrete">
+    <section id="why" className="section-pad relative overflow-hidden bg-section-charcoal text-concrete">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(232,93,4,0.08),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(201,162,39,0.12),transparent_40%)]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 lg:px-10">
+      <div className="section-wrap">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Why Nature Stone"
@@ -19,7 +19,7 @@ export function WhyChooseUs() {
             subtitle="Industrial reliability with luxury presentation—every engagement is backed by hydraulic expertise, logistics discipline, and responsive technical support."
           />
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:gap-6 xl:grid-cols-4">
             {WHY_FEATURES.map((item, i) => (
               <TiltCard
                 key={item.title}

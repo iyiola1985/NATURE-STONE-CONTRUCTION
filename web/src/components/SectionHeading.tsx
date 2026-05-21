@@ -18,7 +18,7 @@ export function SectionHeading({ eyebrow, title, subtitle, align = "center" }: P
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55 }}
-      className={`mb-12 max-w-3xl space-y-3 md:mb-16 ${alignClass}`}
+      className={`mb-10 max-w-3xl space-y-2.5 sm:mb-12 sm:space-y-3 md:mb-16 ${alignClass}`}
     >
       {eyebrow && <p className="type-badge">{eyebrow}</p>}
       <h2 className="type-title text-zinc-900 dark:text-white">{title}</h2>
