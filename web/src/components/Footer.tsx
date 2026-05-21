@@ -96,20 +96,26 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-stone-gray md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6">
-          <p>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</p>
-          <p>
-            Powered by{" "}
-            <a
-              href="https://sholatech.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-gray-muted underline-offset-2 transition hover:text-gold hover:underline"
-            >
-              sholatech.com
-            </a>
-          </p>
-          <p className="text-stone-gray-muted md:text-right">Precision industrial systems · Built in Nigeria · Trusted nationwide</p>
+        <div className="mt-12 border-t border-gold/10 pt-8 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-10 md:pb-0">
+          <div className="flex flex-col gap-3 text-center text-xs sm:text-left md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6">
+            <p className="text-concrete/90">
+              © {new Date().getFullYear()} {SITE.legalName}. All rights reserved.
+            </p>
+            <p className="hidden text-stone-gray-muted sm:block md:max-w-xs md:flex-1 md:text-right lg:max-w-md">
+              Precision industrial systems · Built in Nigeria · Trusted nationwide
+            </p>
+            <p className="relative z-[1] shrink-0 text-sm text-concrete sm:text-xs md:order-none">
+              Powered by{" "}
+              <a
+                href="https://sholatech.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-gold underline decoration-gold/50 underline-offset-2 transition hover:text-gold-bright"
+              >
+                sholatech.com
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
