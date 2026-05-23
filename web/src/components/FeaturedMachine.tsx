@@ -20,7 +20,7 @@ export function FeaturedMachine() {
   function submitQuote(e: React.FormEvent) {
     e.preventDefault();
     const msg = qt4QuotationMessage(form);
-    const url = whatsappPrefillUrl(msg);
+    const url = whatsappPrefillUrl(msg, SITE.whatsappAlt);
     const opened = window.open(url, "_blank", "noopener,noreferrer");
     if (!opened) window.location.href = url;
   }
@@ -100,7 +100,7 @@ export function FeaturedMachine() {
                 <p className="mt-1 text-sm text-stone-gray-muted">Receive the QT4-20 technical datasheet and cycle diagrams.</p>
               </div>
               <a
-                href={whatsappPrefillUrl(brochureRequestMessage())}
+                href={whatsappPrefillUrl(brochureRequestMessage(), SITE.whatsappAlt)}
                 target="_blank"
                 rel="noreferrer"
                 className="type-cta cta-glow mt-4 inline-flex rounded-full border border-gold/50 bg-gold/10 px-5 py-2.5 text-gold transition hover:bg-gold hover:text-charcoal md:mt-0"
@@ -112,6 +112,12 @@ export function FeaturedMachine() {
             <form onSubmit={submitQuote} className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl">
               <p className="type-badge">Request quotation</p>
               <h4 className="type-title mt-2 text-white">QT4-20 configuration</h4>
+              <p className="mt-2 text-xs text-stone-gray-muted">
+                Quotes &amp; brochures route to{" "}
+                <a href={`tel:${SITE.phoneAlt.replace(/\s/g, "")}`} className="text-gold hover:underline">
+                  {SITE.phoneAlt}
+                </a>
+              </p>
               <div className="mt-4 grid min-w-0 gap-3 md:grid-cols-2">
                 <input
                   required

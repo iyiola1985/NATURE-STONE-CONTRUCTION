@@ -2,9 +2,13 @@ export const SITE = {
   name: "Nature Stone Construction",
   legalName: "Nature Stone Construction & Properties",
   tagline: "Building Nigeria's Future With Precision Block Technology",
+  /** Primary line — contact section, footer, main WhatsApp (09065967485) */
   phone: "+234 906 596 7485",
+  whatsapp: "2349065967485",
+  /** Secondary line — QT4-20 / machine quotation form (08062653666) */
+  phoneAlt: "+234 806 265 3666",
+  whatsappAlt: "2348062653666",
   email: "naturestoneconstruction@gmail.com",
-  whatsapp: "2349065967485", // Digits only for wa.me (09065967485 → +234 906 596 7485)
   address: "Industrial Zone, Lagos, Nigeria",
   mapQuery: "Lagos+Nigeria",
 };
@@ -166,12 +170,11 @@ export const WHY_FEATURES = [
 ] as const;
 
 export const PROCESS_STEPS = [
-  { step: 1, title: "Consultation", detail: "Scope, soil context, and volume planning." },
-  { step: 2, title: "Design & customization", detail: "Molds, finishes, and logistics aligned." },
-  { step: 3, title: "Manufacturing", detail: "Hydraulic cycles monitored for density." },
-  { step: 4, title: "Delivery", detail: "Nationwide scheduling with protected loads." },
-  { step: 5, title: "Installation", detail: "Site crews aligned to engineering specs." },
-  { step: 6, title: "Support", detail: "Aftercare, spares, and production guidance." },
+  { step: 1, title: "Design & customization", detail: "Molds, finishes, and logistics aligned to your scope." },
+  { step: 2, title: "Manufacturing", detail: "Hydraulic cycles monitored for density and finish." },
+  { step: 3, title: "Delivery", detail: "Nationwide scheduling with protected loads." },
+  { step: 4, title: "Installation", detail: "Site crews aligned to engineering specs." },
+  { step: 5, title: "Support", detail: "Aftercare, spares, and production guidance." },
 ] as const;
 
 export const TESTIMONIALS = [

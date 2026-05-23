@@ -15,8 +15,8 @@ export function Process() {
         <ScrollReveal>
           <SectionHeading
             eyebrow="Process"
-            title="Disciplined delivery from consultation to support"
-            subtitle="Six synchronized stages engineered for transparency—mirroring international OEM programs while staying agile for Nigerian construction timelines."
+            title="Disciplined delivery from design to support"
+            subtitle="Five synchronized stages engineered for transparency—mirroring international OEM programs while staying agile for Nigerian construction timelines."
           />
 
           <div className="relative">

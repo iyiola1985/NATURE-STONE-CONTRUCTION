@@ -17,7 +17,7 @@ export function Contact() {
   function submit(e: React.FormEvent) {
     e.preventDefault();
     const msg = contactInquiryMessage(form);
-    const url = whatsappPrefillUrl(msg);
+    const url = whatsappPrefillUrl(msg, SITE.whatsapp);
     const opened = window.open(url, "_blank", "noopener,noreferrer");
     if (!opened) window.location.href = url;
   }
