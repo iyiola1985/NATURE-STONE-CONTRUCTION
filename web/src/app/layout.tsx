@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow, Oswald } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SITE } from "@/lib/constants";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en-NG" suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable} min-w-0 overflow-x-clip font-sans antialiased`}>
+        <GoogleAnalytics />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
