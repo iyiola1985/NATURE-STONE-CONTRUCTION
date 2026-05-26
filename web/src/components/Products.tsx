@@ -16,7 +16,7 @@ export function Products() {
           <SectionHeading
             eyebrow="Catalog"
             title="Premium concrete systems"
-            subtitle="Industrial-grade hollow blocks, pavers, interlock, bricks, and curb stones—engineered for Nigerian aggregates and climate cycles."
+            subtitle="I-Type and V-Type pavers, interlock units, and road & garden kerbs—each with factory-grade specs for Nigerian aggregates and climate cycles."
           />
 
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -41,6 +41,9 @@ export function Products() {
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <p className="type-badge">Industrial grade</p>
                     <h3 className="type-title mt-2 text-white">{card.title}</h3>
+                    {"specs" in card && card.specs ? (
+                      <p className="type-perk mt-2 text-gold">{card.specs}</p>
+                    ) : null}
                     <p className="mt-3 max-w-md text-sm leading-relaxed text-zinc-200">{card.description}</p>
                   </div>
                 </div>

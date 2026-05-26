@@ -4,14 +4,20 @@ import { useState } from "react";
 import { FactoryVideoPlayer } from "@/components/FactoryVideoPlayer";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TiltCard } from "@/components/motion/TiltCard";
-import { MACHINE_FEATURES, MACHINE_OUTPUTS, SITE } from "@/lib/constants";
+import { FACTORY_VIDEO_SRC, FORKLIFT_VIDEO_SRC, MACHINE_FEATURES, MACHINE_OUTPUTS, SITE } from "@/lib/constants";
 import { brochureRequestMessage, qt4QuotationMessage, whatsappPrefillUrl } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/SectionHeading";
 
 const QT4_VIDEO_HIGHLIGHTS = [
   "QT4-20 hydraulic molding",
   "Live production cycle",
-  "Fleet & plant logistics",
+  "Semi-automatic line",
+];
+
+const FORKLIFT_VIDEO_HIGHLIGHTS = [
+  "On-site material handling",
+  "Factory yard logistics",
+  "Load & dispatch ready",
 ];
 
 export function FeaturedMachine() {
@@ -48,15 +54,31 @@ export function FeaturedMachine() {
 
           <div className="grid min-w-0 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div className="min-w-0 space-y-6">
-              <FactoryVideoPlayer
-                variant="dark"
-                badge="QT4-20 in production"
-                title="Watch the hydraulic line — machine operation & delivery fleet"
-                highlights={QT4_VIDEO_HIGHLIGHTS}
-                playLabel="Play full machine footage"
-                hint="Real site video: semi-automatic molding, material flow, and trucks ready for dispatch."
-                ariaLabel="Play QT4-20 hydraulic block machine production video"
-              />
+              <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+                <FactoryVideoPlayer
+                  variant="dark"
+                  badge="QT4-20 in production"
+                  title="Hydraulic block machine — live molding cycle"
+                  highlights={QT4_VIDEO_HIGHLIGHTS}
+                  playLabel="Play machine footage"
+                  ariaLabel="Play QT4-20 hydraulic block machine production video"
+                  videoSrc={FACTORY_VIDEO_SRC}
+                  posterSrc="/images/project-3.png"
+                />
+                <FactoryVideoPlayer
+                  variant="dark"
+                  badge="Yard operations"
+                  title="Forklift at work — moving materials on site"
+                  highlights={FORKLIFT_VIDEO_HIGHLIGHTS}
+                  playLabel="Play forklift footage"
+                  ariaLabel="Play forklift yard operations video"
+                  videoSrc={FORKLIFT_VIDEO_SRC}
+                  posterSrc="/images/project-2.png"
+                />
+              </div>
+              <p className="type-body text-center text-sm text-stone-gray-muted">
+                Side-by-side view: block production on the QT4-20 line and forklift logistics in the yard.
+              </p>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">
               <div>

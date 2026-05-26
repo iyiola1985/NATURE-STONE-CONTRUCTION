@@ -1,11 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
+import { ImageLightboxGallery, type LightboxImage } from "@/components/ImageLightboxGallery";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { SectionHeading } from "@/components/SectionHeading";
+
+const ABOUT_BLOCK_IMAGES: LightboxImage[] = [
+  {
+    src: "/images/about/interlock-range.png",
+    alt: "Interlock pavers in red, grey, and black",
+    className: "md:col-span-2 md:row-span-2 min-h-[200px] sm:min-h-[240px]",
+  },
+  { src: "/images/about/interlock-2.png", alt: "Stacked concrete paving blocks ready for installation" },
+  { src: "/images/about/interlock-3.png", alt: "Craftsman laying interlock pavers on site" },
+  { src: "/images/about/interlock-1.png", alt: "Finished herringbone paver surface" },
+  { src: "/images/about/interlock-4.png", alt: "Premium grey interlock pavement" },
+];
 
 const milestones = [
   { year: "2014", label: "Industrial paving expansion across Lagos corridors." },
@@ -64,18 +75,20 @@ export function About() {
               </div>
 
               <div className="panel-glass relative overflow-hidden rounded-3xl shadow-glow-border dark:shadow-glow-border-dark">
-                <div className="grid md:grid-cols-[1.1fr_0.9fr]">
-                  <ParallaxLayer className="relative min-h-[280px] overflow-hidden md:min-h-[320px]" range={14}>
-                    <div data-parallax-target className="absolute inset-0 h-[122%] w-full -top-[11%]">
-                      <Image src="/images/project-2.png" alt="Leadership and site operations" fill className="object-cover" sizes="(max-width:768px) 100vw, 50vw" />
+                <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                  <ImageLightboxGallery
+                    images={ABOUT_BLOCK_IMAGES}
+                    gridClassName="grid grid-cols-2 gap-2 p-3 sm:gap-3 sm:p-4 md:grid-cols-3 md:p-5"
+                  />
+
+                  <div className="flex flex-col justify-center gap-6 border-t border-matte/10 p-6 sm:p-8 lg:border-l lg:border-t-0 dark:border-gold/15">
+                    <div>
+                      <p className="type-badge">Our blocks</p>
+                      <p className="type-subtitle mt-2 text-matte dark:text-concrete">
+                        From factory floor to finished pavement — tap any photo to view full size. I-Type, interlock, and kerb
+                        systems built for Nigerian sites.
+                      </p>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent md:bg-gradient-to-r" />
-                    <div className="absolute bottom-6 left-6 z-[1] max-w-xs">
-                      <p className="type-badge">Leadership</p>
-                      <p className="type-subtitle mt-2 text-white">Precision-led execution from quarry to pavement.</p>
-                    </div>
-                  </ParallaxLayer>
-                  <div className="flex flex-col gap-6 p-8">
                     <div>
                       <p className="type-perk text-gold">Mission</p>
                       <p className="type-body mt-3 text-sm text-stone-gray-deep dark:text-stone-gray-muted">

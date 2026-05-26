@@ -16,6 +16,9 @@ export const SITE = {
 /** Hosted factory reel (machine operation & logistics) */
 export const FACTORY_VIDEO_SRC = "/videos/machine-operations.mp4";
 
+/** Forklift yard operations beside the molding line */
+export const FORKLIFT_VIDEO_SRC = "/videos/forklift-operations.mp4";
+
 /** Projects reel — collection through completed paving handover (web-compressed for deploy) */
 export const PROJECTS_VIDEO_SRC = "/videos/projects-completed-web.mp4";
 
@@ -82,29 +85,31 @@ export const MACHINE_OUTPUTS = [
 
 export const PRODUCT_CARDS = [
   {
-    title: "Hollow Blocks",
-    description: "Structural shells engineered for load-bearing walls and rapid assembly.",
+    title: "I-Type Pavers",
+    description:
+      "Rectangular herringbone-ready pavers—red, grey, and black—for roads, estates, and commercial yards.",
     image: "/images/product-i-type.png",
+    specs: "L200 × W100 × H80/60 mm · 50 pcs/m²",
   },
   {
-    title: "Paving Stones",
-    description: "Precision surfaces for roads, carparks, and premium landscapes.",
+    title: "V-Type Pavers",
+    description: "V-profile paving stones for durable surfaces and premium landscape finishes.",
     image: "/images/product-v-type.png",
   },
   {
     title: "Interlock Pavers",
-    description: "Bone and pattern-ready pavers with striking geometric layouts.",
+    description: "Bone and pattern-ready interlock units with striking geometric layouts.",
     image: "/images/product-bone.png",
   },
   {
-    title: "Solid Bricks",
-    description: "Dense masonry units for cores, partitions, and heavy-duty builds.",
-    image: "/images/project-1.png",
+    title: "Road Kerb Stones",
+    description: "Carriage and expressway kerbs engineered for civil road specifications.",
+    image: "/images/product-road-kerb.png",
   },
   {
-    title: "Curb Stones",
-    description: "Road and garden kerbs aligned to expressway and residential specs.",
-    image: "/images/product-road-kerb.png",
+    title: "Garden Kerb Stones",
+    description: "Landscape edging kerbs for gardens, walkways, and residential perimeters.",
+    image: "/images/product-garden-kerb.png",
   },
 ] as const;
 
