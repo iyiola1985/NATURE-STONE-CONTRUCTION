@@ -9,14 +9,18 @@ import { SITE } from "@/lib/constants";
 const display = Oswald({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 /** Body copy, forms, paragraphs (Barlow) */
 const body = Barlow({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {

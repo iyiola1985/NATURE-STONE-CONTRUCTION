@@ -1,16 +1,19 @@
 "use client";
 
-import { About } from "@/components/About";
-import { Contact } from "@/components/Contact";
-import { FeaturedMachine } from "@/components/FeaturedMachine";
-import { Footer } from "@/components/Footer";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
+import { LazySection } from "@/components/LazySection";
 import { Navbar } from "@/components/Navbar";
-import { Portfolio } from "@/components/Portfolio";
-import { Process } from "@/components/Process";
-import { Products } from "@/components/Products";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
+
+const About = dynamic(() => import("@/components/About").then((m) => ({ default: m.About })));
+const FeaturedMachine = dynamic(() => import("@/components/FeaturedMachine").then((m) => ({ default: m.FeaturedMachine })));
+const Products = dynamic(() => import("@/components/Products").then((m) => ({ default: m.Products })));
+const Portfolio = dynamic(() => import("@/components/Portfolio").then((m) => ({ default: m.Portfolio })));
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs })));
+const Process = dynamic(() => import("@/components/Process").then((m) => ({ default: m.Process })));
+const Contact = dynamic(() => import("@/components/Contact").then((m) => ({ default: m.Contact })));
+const Footer = dynamic(() => import("@/components/Footer").then((m) => ({ default: m.Footer })));
+const WhatsAppFloat = dynamic(() => import("@/components/WhatsAppFloat").then((m) => ({ default: m.WhatsAppFloat })));
 
 export function HomePage() {
   return (
@@ -18,13 +21,27 @@ export function HomePage() {
       <Navbar />
       <main className="min-w-0 overflow-x-clip">
         <Hero />
-        <About />
-        <FeaturedMachine />
-        <Products />
-        <Portfolio />
-        <WhyChooseUs />
-        <Process />
-        <Contact />
+        <LazySection minHeight="480px">
+          <About />
+        </LazySection>
+        <LazySection minHeight="520px">
+          <FeaturedMachine />
+        </LazySection>
+        <LazySection minHeight="400px">
+          <Products />
+        </LazySection>
+        <LazySection minHeight="400px">
+          <Portfolio />
+        </LazySection>
+        <LazySection minHeight="360px">
+          <WhyChooseUs />
+        </LazySection>
+        <LazySection minHeight="360px">
+          <Process />
+        </LazySection>
+        <LazySection minHeight="400px">
+          <Contact />
+        </LazySection>
       </main>
       <Footer />
       <WhatsAppFloat />

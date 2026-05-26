@@ -223,7 +223,7 @@ export function FactoryVideoPlayer({
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   onLoadedData={() => setVideoReady(true)}
                   onError={() => setVideoFailed(true)}
                   className={`absolute inset-0 h-full w-full object-cover transition duration-700 ${
@@ -377,7 +377,7 @@ export function FactoryVideoPlayer({
                     src={videoSrc}
                     controls
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     controlsList="nodownload"
                     className="h-full max-h-[100dvh] w-full max-w-[100dvw] object-contain"
                     onError={() => setModalVideoFailed(true)}
