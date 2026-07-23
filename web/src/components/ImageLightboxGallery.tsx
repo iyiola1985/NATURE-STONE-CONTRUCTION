@@ -61,19 +61,19 @@ export function ImageLightboxGallery({ images, gridClassName = "" }: Props) {
             key={img.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`group relative min-h-[120px] cursor-zoom-in overflow-hidden rounded-xl border border-matte/10 bg-matte/5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold dark:border-gold/15 sm:min-h-[140px] ${img.className ?? ""}`}
+            className={`group relative min-h-[100px] cursor-zoom-in overflow-hidden rounded-lg border border-matte/10 bg-matte/5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold dark:border-gold/15 sm:min-h-[140px] sm:rounded-xl ${img.className ?? ""}`}
             aria-label={`View larger: ${img.alt}`}
           >
             <Image
               src={img.src}
               alt={img.alt}
               fill
-              className="object-cover transition duration-500 group-hover:scale-[1.04]"
-              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="object-cover transition duration-500 group-hover:scale-[1.04] group-active:scale-[1.02]"
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
-            <span className="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/25" />
-            <span className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white opacity-0 backdrop-blur-sm transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-              <ExpandIcon className="h-4 w-4" />
+            <span className="absolute inset-0 bg-black/10 transition duration-300 group-hover:bg-black/25 sm:bg-black/0" />
+            <span className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border border-white/30 bg-black/55 text-white backdrop-blur-sm sm:right-2 sm:top-2 sm:h-8 sm:w-8 sm:opacity-0 sm:transition sm:duration-300 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+              <ExpandIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </span>
           </button>
         ))}
@@ -90,15 +90,17 @@ export function ImageLightboxGallery({ images, gridClassName = "" }: Props) {
             aria-modal="true"
             aria-label={active.alt}
           >
-            <div className="flex shrink-0 items-center justify-between gap-3 px-4 pb-2 pt-[max(0.75rem,env(safe-area-inset-top))]">
-              <p className="type-subtitle line-clamp-2 min-w-0 flex-1 text-concrete">{active.alt}</p>
-              <p className="type-perk shrink-0 text-stone-gray-muted">
-                {activeIndex + 1} / {images.length}
-              </p>
+            <div className="flex shrink-0 items-start justify-between gap-2 px-3 pb-2 pt-[max(0.75rem,env(safe-area-inset-top))] sm:items-center sm:gap-3 sm:px-4">
+              <div className="min-w-0 flex-1">
+                <p className="type-subtitle line-clamp-2 text-sm text-concrete sm:text-base">{active.alt}</p>
+                <p className="type-perk mt-1 text-stone-gray-muted">
+                  {activeIndex + 1} / {images.length}
+                </p>
+              </div>
               <button
                 type="button"
                 onClick={close}
-                className="type-cta shrink-0 rounded-full border border-gold/30 bg-black/60 px-4 py-2 text-gold backdrop-blur-sm transition hover:bg-gold hover:text-charcoal"
+                className="type-cta shrink-0 rounded-full border border-gold/30 bg-black/60 px-3.5 py-2 text-gold backdrop-blur-sm transition hover:bg-gold hover:text-charcoal sm:px-4"
                 aria-label="Close image view"
               >
                 Close

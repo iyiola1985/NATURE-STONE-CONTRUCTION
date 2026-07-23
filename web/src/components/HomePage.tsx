@@ -9,7 +9,7 @@ const About = dynamic(() => import("@/components/About").then((m) => ({ default:
 const FeaturedMachine = dynamic(() => import("@/components/FeaturedMachine").then((m) => ({ default: m.FeaturedMachine })));
 const Products = dynamic(() => import("@/components/Products").then((m) => ({ default: m.Products })));
 const Portfolio = dynamic(() => import("@/components/Portfolio").then((m) => ({ default: m.Portfolio })));
-const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs })));
+const HireFleet = dynamic(() => import("@/components/HireFleet").then((m) => ({ default: m.HireFleet })));
 const Process = dynamic(() => import("@/components/Process").then((m) => ({ default: m.Process })));
 const Contact = dynamic(() => import("@/components/Contact").then((m) => ({ default: m.Contact })));
 const Footer = dynamic(() => import("@/components/Footer").then((m) => ({ default: m.Footer })));
@@ -33,8 +33,8 @@ export function HomePage() {
         <LazySection minHeight="400px">
           <Portfolio />
         </LazySection>
-        <LazySection minHeight="360px">
-          <WhyChooseUs />
+        <LazySection minHeight="520px">
+          <HireFleet />
         </LazySection>
         <LazySection minHeight="360px">
           <Process />

@@ -15,9 +15,9 @@ const QT4_VIDEO_HIGHLIGHTS = [
 ];
 
 const FORKLIFT_VIDEO_HIGHLIGHTS = [
+  "Forklift for hire",
   "On-site material handling",
-  "Factory yard logistics",
-  "Load & dispatch ready",
+  "Yard loading & stacking",
 ];
 
 export function FeaturedMachine() {
@@ -67,17 +67,21 @@ export function FeaturedMachine() {
                 />
                 <FactoryVideoPlayer
                   variant="dark"
-                  badge="Yard operations"
-                  title="Forklift at work — moving materials on site"
+                  badge="Forklift for hire"
+                  title="Forklift at work — hire this muscle for your site"
                   highlights={FORKLIFT_VIDEO_HIGHLIGHTS}
                   playLabel="Play forklift footage"
-                  ariaLabel="Play forklift yard operations video"
+                  ariaLabel="Play forklift for hire operations video"
                   videoSrc={FORKLIFT_VIDEO_SRC}
                   posterSrc="/images/project-2.png"
                 />
               </div>
               <p className="type-body text-center text-sm text-stone-gray-muted">
-                Side-by-side view: block production on the QT4-20 line and forklift logistics in the yard.
+                Block production on the QT4-20 — plus forklift &amp; truck hire when you need loads moved.{" "}
+                <a href="#hire" className="text-gold underline-offset-2 hover:underline">
+                  See hire options
+                </a>
+                .
               </p>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glass backdrop-blur-xl md:flex md:items-center md:justify-between md:gap-6">

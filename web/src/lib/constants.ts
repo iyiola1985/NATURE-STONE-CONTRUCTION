@@ -28,7 +28,7 @@ export const NAV_LINKS = [
   { href: "#machine", label: "QT4-20" },
   { href: "#products", label: "Products" },
   { href: "#portfolio", label: "Projects" },
-  { href: "#why", label: "Why Us" },
+  { href: "#hire", label: "Hire" },
   { href: "#process", label: "Process" },
   { href: "#contact", label: "Contact" },
 ] as const;
