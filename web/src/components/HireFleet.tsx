@@ -1,29 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { FactoryVideoPlayer } from "@/components/FactoryVideoPlayer";
+import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { SITE } from "@/lib/constants";
+import { HIRE_FORKLIFT_IMAGE, SITE, TRUCK_HIRE_VIDEO_SRC } from "@/lib/constants";
 import { whatsappPrefillUrl } from "@/lib/whatsapp";
 
-const HIRE_CARDS = [
+const FORKLIFT_GALLERY = [
   {
-    kind: "forklift" as const,
-    eyebrow: "Lift it. Stack it. Done.",
-    title: "Forklift for hire",
-    punch: "Need heavy loads moved without the drama? Our forklift is ready for your yard, warehouse, or site.",
-    perks: ["On-site loading & stacking", "Factory & warehouse jobs", "Short or daily hire"],
-    image: "/images/project-2.png",
-    message: `Hello ${SITE.name}, I want to hire a forklift. Please share availability and rates.`,
-  },
-  {
-    kind: "truck" as const,
-    eyebrow: "Haul it. Deliver it. Arrive.",
-    title: "Truck for hire",
-    punch: "Blocks, pavers, kerbs, or site materials — our truck gets them where they need to go, on time.",
-    perks: ["Nationwide-ready logistics", "Pallets & bulk loads", "Flexible hire windows"],
-    image: "/images/project-3.png",
-    message: `Hello ${SITE.name}, I want to hire a truck. Please share availability and rates.`,
+    src: HIRE_FORKLIFT_IMAGE,
+    alt: "Yellow Lugong all-terrain forklift ready for hire at Nature Stone yard",
+    className: "min-h-[200px] sm:min-h-[240px] md:min-h-[280px]",
   },
 ];
 
@@ -55,53 +43,104 @@ export function HireFleet() {
           </div>
 
           <div className="grid min-w-0 gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
-            {HIRE_CARDS.map((card, i) => (
-              <motion.article
-                key={card.kind}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="group relative min-w-0 overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-white/[0.08] to-transparent shadow-[0_0_0_1px_rgba(201,162,39,0.12),0_24px_80px_rgba(0,0,0,0.35)] sm:rounded-3xl"
-              >
-                <div className="relative aspect-[16/11] overflow-hidden sm:aspect-[16/9]">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-[1.05]"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/55 to-transparent" />
-                  <span className="type-perk absolute left-3 top-3 max-w-[calc(100%-1.5rem)] truncate rounded-full border border-gold/40 bg-black/55 px-2.5 py-1 text-gold backdrop-blur-md sm:left-4 sm:top-4 sm:max-w-none sm:px-3 sm:py-1.5">
-                    {card.eyebrow}
-                  </span>
-                </div>
+            {/* Forklift — real photo, tap to enlarge */}
+            <motion.article
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="group relative min-w-0 overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-white/[0.08] to-transparent shadow-[0_0_0_1px_rgba(201,162,39,0.12),0_24px_80px_rgba(0,0,0,0.35)] sm:rounded-3xl"
+            >
+              <div className="relative p-2 sm:p-3">
+                <span className="type-perk pointer-events-none absolute left-5 top-5 z-[3] max-w-[calc(100%-2.5rem)] truncate rounded-full border border-gold/40 bg-black/55 px-2.5 py-1 text-gold backdrop-blur-md sm:left-6 sm:top-6 sm:px-3 sm:py-1.5">
+                  Lift it. Stack it. Done.
+                </span>
+                <ImageLightboxGallery
+                  images={FORKLIFT_GALLERY}
+                  gridClassName="grid grid-cols-1 overflow-hidden rounded-xl sm:rounded-2xl"
+                />
+              </div>
 
-                <div className="relative space-y-3.5 p-4 sm:space-y-4 sm:p-7">
-                  <h3 className="type-title text-lg text-white sm:text-xl">{card.title}</h3>
-                  <p className="type-body text-sm text-zinc-300 sm:text-base">{card.punch}</p>
-                  <ul className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {card.perks.map((perk) => (
-                      <li
-                        key={perk}
-                        className="type-perk rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-concrete-dim sm:px-3 sm:py-1"
-                      >
-                        {perk}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={whatsappPrefillUrl(card.message, SITE.whatsapp)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="type-cta cta-glow inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-3.5 text-center text-white shadow-lg shadow-black/30 transition hover:brightness-110"
-                  >
-                    Book {card.kind === "forklift" ? "forklift" : "truck"} on WhatsApp
-                  </a>
-                </div>
-              </motion.article>
-            ))}
+              <div className="relative space-y-3.5 px-4 pb-4 sm:space-y-4 sm:px-7 sm:pb-7">
+                <h3 className="type-title text-lg text-white sm:text-xl">Forklift for hire</h3>
+                <p className="type-body text-sm text-zinc-300 sm:text-base">
+                  Need heavy loads moved without the drama? Our forklift is ready for your yard, warehouse, or site. Tap
+                  the photo for a closer look.
+                </p>
+                <ul className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {["On-site loading & stacking", "Factory & warehouse jobs", "Short or daily hire"].map((perk) => (
+                    <li
+                      key={perk}
+                      className="type-perk rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-concrete-dim sm:px-3 sm:py-1"
+                    >
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={whatsappPrefillUrl(
+                    `Hello ${SITE.name}, I want to hire a forklift. Please share availability and rates.`,
+                    SITE.whatsapp
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="type-cta cta-glow inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-3.5 text-center text-white shadow-lg shadow-black/30 transition hover:brightness-110"
+                >
+                  Book forklift on WhatsApp
+                </a>
+              </div>
+            </motion.article>
+
+            {/* Truck — clickable video */}
+            <motion.article
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.08 }}
+              className="group relative min-w-0 overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-white/[0.08] to-transparent shadow-[0_0_0_1px_rgba(201,162,39,0.12),0_24px_80px_rgba(0,0,0,0.35)] sm:rounded-3xl"
+            >
+              <div className="p-2 sm:p-3">
+                <FactoryVideoPlayer
+                  variant="dark"
+                  badge="Haul it. Deliver it. Arrive."
+                  title="Truck for hire — watch it on the road"
+                  highlights={["Blocks & pavers", "Site materials", "Flexible hire"]}
+                  playLabel="Play truck footage"
+                  ariaLabel="Play truck for hire video"
+                  videoSrc={TRUCK_HIRE_VIDEO_SRC}
+                  posterSrc="/images/project-3.png"
+                />
+              </div>
+
+              <div className="relative space-y-3.5 px-4 pb-4 sm:space-y-4 sm:px-7 sm:pb-7">
+                <h3 className="type-title text-lg text-white sm:text-xl">Truck for hire</h3>
+                <p className="type-body text-sm text-zinc-300 sm:text-base">
+                  Blocks, pavers, kerbs, or site materials — our truck gets them where they need to go, on time. Tap the
+                  video to play full screen.
+                </p>
+                <ul className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {["Nationwide-ready logistics", "Pallets & bulk loads", "Flexible hire windows"].map((perk) => (
+                    <li
+                      key={perk}
+                      className="type-perk rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-concrete-dim sm:px-3 sm:py-1"
+                    >
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={whatsappPrefillUrl(
+                    `Hello ${SITE.name}, I want to hire a truck. Please share availability and rates.`,
+                    SITE.whatsapp
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="type-cta cta-glow inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-3.5 text-center text-white shadow-lg shadow-black/30 transition hover:brightness-110"
+                >
+                  Book truck on WhatsApp
+                </a>
+              </div>
+            </motion.article>
           </div>
 
           <div className="mt-6 flex min-w-0 flex-col gap-4 overflow-hidden rounded-2xl border border-industrial/40 bg-gradient-to-br from-industrial/25 via-gold/15 to-transparent p-4 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:bg-gradient-to-r sm:p-6">

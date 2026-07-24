@@ -19,6 +19,12 @@ export const FACTORY_VIDEO_SRC = "/videos/machine-operations.mp4";
 /** Forklift yard operations beside the molding line */
 export const FORKLIFT_VIDEO_SRC = "/videos/forklift-operations.mp4";
 
+/** Truck for hire — delivery / haulage reel */
+export const TRUCK_HIRE_VIDEO_SRC = "/videos/truck-hire.mp4";
+
+/** Hire section forklift photo */
+export const HIRE_FORKLIFT_IMAGE = "/images/hire-forklift.png";
+
 /** Projects reel — collection through completed paving handover (web-compressed for deploy) */
 export const PROJECTS_VIDEO_SRC = "/videos/projects-completed-web.mp4";
 
