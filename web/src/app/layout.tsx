@@ -30,9 +30,10 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description:
-    "Nature Stone Construction engineers hydraulic block machines—including the QT4-20 semi-automatic line—plus hollow blocks, paving stones, interlock pavers, curb stones, and nationwide infrastructure solutions across Nigeria.",
+    "Nature Stone Construction & Properties engineers hydraulic block machines—including the QT4-20—plus hollow blocks, paving stones, interlock pavers, curb stones, land and property sales, and nationwide infrastructure solutions across Nigeria.",
   keywords: [
     "Nature Stone Construction",
+    "Nature Stone Construction & Properties",
     "QT4-20 block machine",
     "hydraulic block machine Nigeria",
     "interlock pavers",
@@ -41,6 +42,10 @@ export const metadata: Metadata = {
     "curb stones",
     "concrete machinery Lagos",
     "infrastructure Nigeria",
+    "land for sale Nigeria",
+    "properties Lagos",
+    "property development Nigeria",
+    "real estate Lagos",
   ],
   authors: [{ name: SITE.legalName }],
   openGraph: {
@@ -77,7 +82,7 @@ const jsonLd = {
   name: SITE.legalName,
   alternateName: SITE.name,
   description:
-    "Hydraulic block machinery, QT4-20 production lines, hollow blocks, pavers, interlock, curb stones, and nationwide infrastructure surfacing in Nigeria.",
+    "Hydraulic block machinery, QT4-20 production lines, hollow blocks, pavers, interlock, curb stones, land and property sales, and nationwide infrastructure surfacing in Nigeria.",
   url: "https://naturestoneconstruction.ng",
   telephone: SITE.phone,
   email: SITE.email,
@@ -92,6 +97,9 @@ const jsonLd = {
     "Interlock pavers",
     "Road paving",
     "Concrete curb stones",
+    "Land for sale",
+    "Property development",
+    "Real estate Lagos",
   ],
 };
 

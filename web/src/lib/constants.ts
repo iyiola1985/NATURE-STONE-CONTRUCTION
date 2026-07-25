@@ -34,10 +34,54 @@ export const NAV_LINKS = [
   { href: "#machine", label: "QT4-20" },
   { href: "#products", label: "Products" },
   { href: "#portfolio", label: "Projects" },
+  { href: "#properties", label: "Properties" },
   { href: "#hire", label: "Hire" },
   { href: "#process", label: "Process" },
   { href: "#contact", label: "Contact" },
 ] as const;
+
+export const PROPERTY_SERVICES = [
+  "Land sales",
+  "Residential & commercial",
+  "Property development",
+  "Documentation support",
+] as const;
+
+export type PropertyType = "Land" | "Residential" | "Commercial";
+export type PropertyStatus = "For Sale" | "Coming Soon" | "Sold";
+
+export type PropertyListing = {
+  title: string;
+  location: string;
+  type: PropertyType;
+  status: PropertyStatus;
+  highlights: readonly string[];
+  image?: string;
+};
+
+export const PROPERTIES: readonly PropertyListing[] = [
+  {
+    title: "Serviced residential plot",
+    location: "Lekki corridor, Lagos",
+    type: "Land",
+    status: "For Sale",
+    highlights: ["Surveyed plot", "Ready for build"],
+  },
+  {
+    title: "Estate residential unit",
+    location: "Abuja metropolitan area",
+    type: "Residential",
+    status: "Coming Soon",
+    highlights: ["Gated community", "Title support"],
+  },
+  {
+    title: "Commercial frontage plot",
+    location: "Ikeja industrial belt",
+    type: "Commercial",
+    status: "For Sale",
+    highlights: ["High visibility", "Flexible use"],
+  },
+];
 
 export const HERO_STATS = [
   { label: "Daily production", value: "12–13k", unit: "blocks" },

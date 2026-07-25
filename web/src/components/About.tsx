@@ -17,13 +17,6 @@ const ABOUT_BLOCK_IMAGES: LightboxImage[] = [
   { src: "/images/about/interlock-4.png", alt: "Premium grey interlock pavement" },
 ];
 
-const milestones = [
-  { year: "2014", label: "Industrial paving expansion across Lagos corridors." },
-  { year: "2017", label: "Hydraulic line commissioning with PLC-controlled cycles." },
-  { year: "2021", label: "Nationwide logistics network for block and paver delivery." },
-  { year: "2024", label: "QT4-20 flagship production for hollow and interlock demand." },
-];
-
 export function About() {
   return (
     <section id="about" className="section-pad relative overflow-hidden bg-section-concrete dark:bg-section-matte">
@@ -75,17 +68,12 @@ export function About() {
 
             <div className="min-w-0">
               <TiltCard className="panel-glass p-5 sm:p-8 lg:sticky lg:top-28">
-                <p className="type-badge">Timeline</p>
-                <h3 className="type-title mt-3 text-matte dark:text-concrete">Built for scale</h3>
-                <div className="relative mt-6 space-y-6 border-l border-matte/15 pl-5 sm:mt-8 sm:space-y-8 sm:pl-6 dark:border-gold/20">
-                  {milestones.map((m) => (
-                    <div key={m.year} className="relative min-w-0">
-                      <span className="absolute -left-[22px] top-1 flex h-3 w-3 items-center justify-center rounded-full bg-gold shadow-[0_0_0_6px_rgba(201,162,39,0.15)] sm:-left-[29px]" />
-                      <p className="text-sm font-semibold text-industrial">{m.year}</p>
-                      <p className="mt-1.5 text-sm leading-relaxed text-stone-gray sm:mt-2 dark:text-stone-gray-muted">{m.label}</p>
-                    </div>
-                  ))}
-                </div>
+                <p className="type-badge">Established</p>
+                <h3 className="type-title mt-3 text-matte dark:text-concrete">We started in 2023</h3>
+                <p className="mt-4 text-sm leading-relaxed text-stone-gray dark:text-stone-gray-muted">
+                  Founded in 2023 to deliver hydraulic block machinery, premium paving systems, and durable
+                  infrastructure solutions across Nigeria.
+                </p>
               </TiltCard>
             </div>
           </div>

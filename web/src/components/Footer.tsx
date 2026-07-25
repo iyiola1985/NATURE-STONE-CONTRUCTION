@@ -18,7 +18,7 @@ export function Footer() {
               <Image src="/images/logo.png" alt={SITE.legalName} fill className="object-contain brightness-110" />
             </div>
             <p className="mt-6 text-sm leading-relaxed text-stone-gray-muted">
-              Hydraulic block machinery, premium pavers, and infrastructure surfacing engineered for Nigeria&apos;s industrial growth.
+              Hydraulic block machinery, premium pavers, land &amp; property sales, and infrastructure surfacing engineered for Nigeria&apos;s growth.
             </p>
           </div>
 

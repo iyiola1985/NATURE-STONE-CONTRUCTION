@@ -72,6 +72,26 @@ export function IconMold({ className }: { className?: string }) {
   );
 }
 
+export function IconBuilding({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14 10h5a1 1 0 011 1v10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 8h2M8 12h2M8 16h2M17 14h1M17 17h1" strokeLinecap="round" />
+      <path d="M4 21h16" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function IconMapPin({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 21s7-5.2 7-11a7 7 0 10-14 0c0 5.8 7 11 7 11z" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
 export const WHY_ICON_MAP = {
   shield: IconShield,
   chart: IconChart,
